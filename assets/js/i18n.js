@@ -3,7 +3,7 @@ const dict = {
   fr: {
     title: "Analyste en données & intelligence d’affaires • Power BI • Python • Salesforce NPSP",
     cv: "Télécharger mon CV (PDF)",
-    intro_h: "Introduction",
+    intro_h: "Profil professionnel",
     intro_p: "Analyste en données et intelligence d’affaires spécialisé en Power BI, Python et Salesforce NPSP. J’automatise les pipelines de données, améliore la qualité de l’information et transforme les besoins d’affaires en tableaux de bord clairs et actionnables. À la SPCA Montréal, j’ai optimisé plus de 40 000 enregistrements, livré 10+ tableaux de bord, et réduit de 50 % les délais d’analyse marketing.",
     projects_h: "Projets réalisés",
     pdf_preview: "Aperçu PDF",
@@ -42,7 +42,7 @@ const dict = {
   en: {
     title: "Data & Business Intelligence Analyst • Power BI • Python • Salesforce NPSP",
     cv: "Download my CV (PDF)",
-    intro_h: "Introduction",
+    intro_h: "Professional Profile",
     intro_p: "Data & BI Analyst specialized in Power BI, Python, and Salesforce NPSP. I automate data pipelines, improve data quality, and turn business needs into clear, actionable dashboards. At SPCA Montréal, I optimized 40,000+ records, delivered 10+ dashboards, and cut marketing analysis lead times by 50%.",
     projects_h: "Projects",
     pdf_preview: "PDF preview",
@@ -81,7 +81,7 @@ const dict = {
   ar: {
     title: "محلل بيانات وذكاء أعمال • Power BI • Python • Salesforce NPSP",
     cv: "حمّل سيرتي الذاتية (PDF)",
-    intro_h: "مقدمة",
+    intro_h: "الملف المهني",
     intro_p: "محلل بيانات متخصص في Power BI وPython وSalesforce NPSP. أعمل على أتمتة خطوط البيانات وتحسين جودة المعلومات وتحويل الاحتياجات التجارية إلى لوحات معلومات واضحة وقابلة للتنفيذ. في SPCA مونتريال، قمت بتحسين أكثر من 40 ألف سجل، وبناء 10+ لوحات، وتقليص زمن التحليل التسويقي بنسبة 50%.",
     projects_h: "المشاريع المنجزة",
     pdf_preview: "معاينة PDF",
