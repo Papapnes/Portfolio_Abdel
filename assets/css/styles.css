@@ -1,12 +1,12 @@
 
 :root{
-  --bg: #0b1020;
-  --card: rgba(255,255,255,0.06);
-  --card-border: rgba(255,255,255,0.1);
-  --text: #e7ecf4;
-  --muted: #b6c2d0;
-  --accent: #7dd3fc;
-  --accent-2: #34d399;
+  --bg: #091833;                /* bleu nuit élégant */
+  --card: rgba(255,255,255,0.08);
+  --card-border: rgba(255,255,255,0.12);
+  --text: #f0f5ff;              /* texte plus clair */
+  --muted: #b9c6de;
+  --accent: #00bfa6;            /* vert menthe moderne */
+  --accent-2: #3fa9f5;          /* bleu clair */
 }
 
 *{box-sizing:border-box}
