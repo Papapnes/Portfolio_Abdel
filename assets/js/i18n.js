@@ -7,6 +7,7 @@ const dict = {
     intro_p: "Analyste en données et intelligence d’affaires spécialisé en Power BI, Python et Salesforce NPSP. J’automatise les pipelines de données, améliore la qualité de l’information et transforme les besoins d’affaires en tableaux de bord clairs et actionnables. À la SPCA Montréal, j’ai optimisé plus de 40 000 enregistrements, livré 10+ tableaux de bord, et réduit de 50 % les délais d’analyse marketing.",
 
     experience_h: "Expérience professionnelle",
+
     exp1_title: "Consultant Freelance – Analyse de données & Power BI",
     exp1_period: "Avril 2026 – Présent | Montréal, QC",
     exp1_desc: "Réalisation de projets en analyse de données, visualisation et création de tableaux de bord interactifs. Développement de solutions Power BI pour le suivi de performance, l’analyse KPI et l’aide à la décision.",
@@ -56,10 +57,12 @@ const dict = {
     data_bi_h: "Data & BI",
     data_bi_b1: "Modélisation, prévisions, segmentation (K-means)",
     data_bi_b2: "Analyses prédictives, storytelling, data quality",
+
     tools_h: "Outils",
     tools_b1: "Power BI, Tableau, Excel avancé",
     tools_b2: "Python (Pandas, NumPy), Power Query, SQL",
     tools_b3: "Salesforce NPSP, Donorbox, Plauti Deduplicate",
+
     skills_soft_h: "Compétences transversales",
     skills_soft_1: "Traduction des besoins en solutions",
     skills_soft_2: "Gestion agile, formation utilisateurs",
@@ -71,7 +74,7 @@ const dict = {
     case2_h: "Système de code-barres pour la saisie",
     case2_p: "Mise en place d’un flux de saisie par scan pour les opérations. Résultat : réduction de 80 % des erreurs et accélération du traitement.",
     case3_h: "Segmentation donateurs — K-means (10 000+)",
-    case3_p: "Clustering comportemental (montants, fréquence, récence) pour personnaliser les campagnes. Amélioration du ciblage et des taux de conversion grâce à des segments actionnables.",
+    case3_p: "Clustering comportemental basé sur les montants, la fréquence et la récence afin de personnaliser les campagnes. Amélioration du ciblage et des taux de conversion grâce à des segments actionnables.",
 
     contact_h: "Contact",
     contact_p: "Cliquez sur le bouton pour afficher les coordonnées directes.",
@@ -89,6 +92,7 @@ const dict = {
     intro_p: "Data and Business Intelligence Analyst specialized in Power BI, Python, and Salesforce NPSP. I automate data pipelines, improve information quality, and transform business needs into clear, actionable dashboards. At SPCA Montréal, I optimized more than 40,000 records, delivered 10+ dashboards, and reduced marketing analysis lead times by 50%.",
 
     experience_h: "Professional Experience",
+
     exp1_title: "Freelance Consultant – Data Analytics & Power BI",
     exp1_period: "April 2026 – Present | Montréal, QC",
     exp1_desc: "Delivery of data analytics, visualization, and interactive dashboard projects. Development of Power BI solutions for performance monitoring, KPI analysis, and decision support.",
@@ -119,7 +123,7 @@ const dict = {
     jobmarket_desc: "Power BI dashboard designed to analyze data job market trends using LinkedIn job postings. The project identifies the most in-demand skills, the most active countries, job types, recruiting companies, and job posting evolution over a selected period.",
     jobmarket_b1: "Analyzed 278 LinkedIn job postings from September to October 2025.",
     jobmarket_b2: "Identified the most requested tools: Excel, Power BI, Tableau, Jira, and PowerPoint.",
-    jobmarket_b3: "Created dynamic KPIs: total job offers, MTD offers, MoM growth, and most in-demand skill.",
+    jobmarket_b3: "Created dynamic KPIs: total job offers, MTD offers, MoM growth, and the most in-demand skill.",
     jobmarket_b4: "Analyzed results by country, job type, company, software, and certification.",
 
     hr_desc: "HR dashboard developed to monitor employee attendance performance, absences, late arrivals, early departures, and time off. The report provides a quick view of key indicators by month, department, country, and attendance status.",
@@ -138,10 +142,12 @@ const dict = {
     data_bi_h: "Data & BI",
     data_bi_b1: "Modeling, forecasting, segmentation (K-means)",
     data_bi_b2: "Predictive analysis, storytelling, data quality",
+
     tools_h: "Tools",
     tools_b1: "Power BI, Tableau, Advanced Excel",
     tools_b2: "Python (Pandas, NumPy), Power Query, SQL",
     tools_b3: "Salesforce NPSP, Donorbox, Plauti Deduplicate",
+
     skills_soft_h: "Soft Skills",
     skills_soft_1: "Translating business needs into solutions",
     skills_soft_2: "Agile project management, user training",
@@ -171,6 +177,7 @@ const dict = {
     intro_p: "محلل بيانات وذكاء أعمال متخصص في Power BI وPython وSalesforce NPSP. أعمل على أتمتة خطوط البيانات، وتحسين جودة المعلومات، وتحويل احتياجات العمل إلى لوحات معلومات واضحة وقابلة للتنفيذ. في SPCA Montréal، قمت بتحسين أكثر من 40,000 سجل، وإنشاء أكثر من 10 لوحات معلومات، وتقليل مدة التحليل التسويقي بنسبة 50%.",
 
     experience_h: "الخبرة المهنية",
+
     exp1_title: "مستشار مستقل – تحليل البيانات وPower BI",
     exp1_period: "أبريل 2026 – حتى الآن | مونتريال، كيبيك",
     exp1_desc: "تنفيذ مشاريع في تحليل البيانات، التصور البياني، وإنشاء لوحات معلومات تفاعلية. تطوير حلول Power BI لمتابعة الأداء، تحليل مؤشرات KPI، ودعم اتخاذ القرار.",
@@ -201,7 +208,7 @@ const dict = {
     jobmarket_desc: "لوحة Power BI مصممة لتحليل اتجاهات سوق العمل في مجال البيانات اعتمادًا على عروض LinkedIn. يحدد المشروع المهارات الأكثر طلبًا، الدول الأكثر نشاطًا، أنواع الوظائف، الشركات التي توظف، وتطور العروض خلال فترة محددة.",
     jobmarket_b1: "تحليل 278 عرض عمل من LinkedIn خلال الفترة من سبتمبر إلى أكتوبر 2025.",
     jobmarket_b2: "تحديد الأدوات الأكثر طلبًا: Excel وPower BI وTableau وJira وPowerPoint.",
-    jobmarket_b3: "إنشاء مؤشرات KPI ديناميكية: إجمالي العروض، عروض الشهر الحالي، نمو شهري، والمهارة الأكثر طلبًا.",
+    jobmarket_b3: "إنشاء مؤشرات KPI ديناميكية: إجمالي العروض، عروض الشهر الحالي، النمو الشهري، والمهارة الأكثر طلبًا.",
     jobmarket_b4: "تحليل النتائج حسب الدولة، نوع الوظيفة، الشركة، البرنامج، والشهادة.",
 
     hr_desc: "لوحة موارد بشرية لمتابعة أداء حضور الموظفين، الغياب، التأخير، المغادرة المبكرة، والإجازات. يوفر التقرير قراءة سريعة للمؤشرات حسب الشهر، القسم، الدولة، وحالة الحضور.",
@@ -220,10 +227,12 @@ const dict = {
     data_bi_h: "البيانات وذكاء الأعمال",
     data_bi_b1: "النمذجة، التنبؤ، التقسيم (K-means)",
     data_bi_b2: "التحليل التنبئي، عرض القصة بالبيانات، جودة البيانات",
+
     tools_h: "الأدوات",
     tools_b1: "Power BI، Tableau، Excel متقدم",
     tools_b2: "Python (Pandas, NumPy)، Power Query، SQL",
     tools_b3: "Salesforce NPSP، Donorbox، Plauti Deduplicate",
+
     skills_soft_h: "المهارات الشخصية",
     skills_soft_1: "ترجمة احتياجات العمل إلى حلول",
     skills_soft_2: "إدارة المشاريع الرشيقة وتدريب المستخدمين",
