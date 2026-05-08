@@ -87,3 +87,38 @@ h1{margin:0;font-size:28px}
   .contact-form .row{grid-template-columns:1fr}
   .avatar{width:96px;height:96px}
 }
+/* Aperçu visuel des projets */
+.project-image-wrap {
+  width: 100%;
+  height: 180px;
+  overflow: hidden;
+  border-radius: 14px;
+  border: 1px solid var(--card-border);
+  background: rgba(0,0,0,.22);
+  margin: 10px 0 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,.25);
+}
+
+.project-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: transform .45s ease, filter .45s ease;
+  filter: brightness(.92) contrast(1.05);
+}
+
+.project-image-wrap:hover .project-image {
+  transform: scale(1.12);
+  filter: brightness(1) contrast(1.1);
+}
+
+/* Effet léger sur les cartes projets */
+.proj {
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+
+.proj:hover {
+  transform: translateY(-4px);
+}
