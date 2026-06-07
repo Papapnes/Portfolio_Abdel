@@ -182,7 +182,7 @@
     }
 
     .hero {
-      min-height: 112vh;
+      min-height: 128vh;
       display: grid;
       grid-template-columns: 1.1fr 0.9fr;
       gap: 34px;
@@ -805,14 +805,14 @@
   <main class="container">
     <section class="hero" aria-label="Presentation principale">
       <div class="hero-copy">
-        <span class="eyebrow">Data Analyst & BI Consultant</span>
-        <h2>Transformer les donnees en decisions claires.</h2>
-        <p>
+        <span class="eyebrow" data-landing-i18n="hero_eyebrow">Data Analyst & BI Consultant</span>
+        <h2 data-landing-i18n="hero_title">Transformer les donnees en decisions claires.</h2>
+        <p data-landing-i18n="hero_desc">
           Je cree des tableaux de bord Power BI, automatise les pipelines de donnees et aide les equipes a piloter leurs indicateurs avec confiance.
         </p>
         <div class="hero-actions">
-          <a class="btn" href="#projects">Voir mes projets</a>
-          <a class="btn secondary" href="#contact">Planifier un rendez-vous</a>
+          <a class="btn" href="#projects" data-landing-i18n="hero_projects">Voir mes projets</a>
+          <a class="btn secondary" href="#contact" data-landing-i18n="hero_meeting">Planifier un rendez-vous</a>
         </div>
       </div>
 
@@ -830,11 +830,11 @@
       <div class="canvas-sticky">
         <canvas id="data-canvas"></canvas>
         <div class="canvas-copy">
-          <span class="eyebrow">Data storytelling</span>
-          <h2>Des signaux bruts aux insights actionnables.</h2>
-          <p>Une experience visuelle inspiree des landing pages Apple : donnees, mouvements, KPI et narration fluide au scroll.</p>
+          <span class="eyebrow" data-landing-i18n="story_eyebrow">Data storytelling</span>
+          <h2 data-landing-i18n="story_title">Des signaux bruts aux insights actionnables.</h2>
+          <p data-landing-i18n="story_desc">Une experience visuelle inspiree des landing pages Apple : donnees, mouvements, KPI et narration fluide au scroll.</p>
         </div>
-        <div class="scroll-hint">Scroll pour explorer</div>
+        <div class="scroll-hint" data-landing-i18n="story_scroll">Scroll pour explorer</div>
       </div>
     </section>
 
@@ -1143,6 +1143,61 @@
       };
     }
 
+    const landingTranslations = {
+      fr: {
+        hero_eyebrow: "Data Analyst & BI Consultant",
+        hero_title: "Transformer les donnees en decisions claires.",
+        hero_desc: "Je cree des tableaux de bord Power BI, automatise les pipelines de donnees et aide les equipes a piloter leurs indicateurs avec confiance.",
+        hero_projects: "Voir mes projets",
+        hero_meeting: "Planifier un rendez-vous",
+        story_eyebrow: "Data storytelling",
+        story_title: "Des signaux bruts aux insights actionnables.",
+        story_desc: "Une experience visuelle inspiree des landing pages Apple : donnees, mouvements, KPI et narration fluide au scroll.",
+        story_scroll: "Scroll pour explorer"
+      },
+      en: {
+        hero_eyebrow: "Data Analyst & BI Consultant",
+        hero_title: "Turning data into clear decisions.",
+        hero_desc: "I build Power BI dashboards, automate data pipelines, and help teams monitor their KPIs with confidence.",
+        hero_projects: "View my projects",
+        hero_meeting: "Schedule a meeting",
+        story_eyebrow: "Data storytelling",
+        story_title: "From raw signals to actionable insights.",
+        story_desc: "A visual experience inspired by Apple landing pages: data, motion, KPIs, and smooth scroll-based storytelling.",
+        story_scroll: "Scroll to explore"
+      },
+      ar: {
+        hero_eyebrow: "محلل بيانات ومستشار ذكاء الأعمال",
+        hero_title: "تحويل البيانات إلى قرارات واضحة.",
+        hero_desc: "أقوم بإنشاء لوحات Power BI، وأتمتة مسارات البيانات، ومساعدة الفرق على متابعة مؤشرات الأداء بثقة.",
+        hero_projects: "عرض مشاريعي",
+        hero_meeting: "حجز موعد",
+        story_eyebrow: "سرد البيانات",
+        story_title: "من إشارات خام إلى رؤى قابلة للتنفيذ.",
+        story_desc: "تجربة بصرية مستوحاة من صفحات Apple: بيانات، حركة، مؤشرات أداء، وسرد سلس أثناء التمرير.",
+        story_scroll: "مرر للاستكشاف"
+      }
+    };
+
+    function applyLandingTranslations(lang) {
+      const dictionary = landingTranslations[lang] || landingTranslations.fr;
+      document.querySelectorAll("[data-landing-i18n]").forEach((element) => {
+        const key = element.getAttribute("data-landing-i18n");
+        if (dictionary[key]) element.textContent = dictionary[key];
+      });
+      document.documentElement.lang = lang;
+      document.querySelector(".hero")?.setAttribute("dir", lang === "ar" ? "rtl" : "ltr");
+      document.querySelector(".scroll-stage")?.setAttribute("dir", lang === "ar" ? "rtl" : "ltr");
+    }
+
+    document.querySelectorAll(".lang-switch button[data-lang]").forEach((button) => {
+      button.addEventListener("click", () => {
+        applyLandingTranslations(button.dataset.lang);
+      });
+    });
+
+    applyLandingTranslations(document.querySelector(".lang-switch button.active")?.dataset.lang || "fr");
+
     renderCalendar();
 
     const canvas = document.getElementById("data-canvas");
@@ -1320,6 +1375,15 @@
           end: "bottom 28%",
           scrub: true
         }
+      });
+
+      ScrollTrigger.create({
+        trigger: ".hero",
+        start: "top top",
+        end: "+=65%",
+        pin: true,
+        pinSpacing: true,
+        anticipatePin: 1
       });
 
       gsap.to(frame, {
