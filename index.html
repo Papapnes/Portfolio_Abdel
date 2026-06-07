@@ -3,11 +3,774 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Abdelkader Bouzourine — Data Analyst & BI</title>
+  <title>Abdelkader Bouzourine - Data Analyst & BI</title>
   <link rel="stylesheet" href="assets/css/styles.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #f5f8ff;
+      --ink: #101828;
+      --muted: #667085;
+      --panel: rgba(255, 255, 255, 0.90);
+      --line: rgba(148, 163, 184, 0.34);
+      --cyan: #06b6d4;
+      --blue: #2563eb;
+      --violet: #7c3aed;
+      --orange: #f97316;
+      --rose: #e11d48;
+      --green: #16a34a;
+      --shadow: 0 24px 70px rgba(15, 23, 42, 0.13);
+      --radius: 18px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: Inter, Arial, sans-serif;
+      color: var(--ink);
+      line-height: 1.65;
+      background:
+        radial-gradient(circle at 12% 8%, rgba(6, 182, 212, 0.24), transparent 26%),
+        radial-gradient(circle at 88% 5%, rgba(249, 115, 22, 0.20), transparent 24%),
+        linear-gradient(rgba(37, 99, 235, 0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(6, 182, 212, 0.07) 1px, transparent 1px),
+        linear-gradient(180deg, #fbfdff 0%, var(--bg) 46%, #ffffff 100%);
+      background-size: auto, auto, 42px 42px, 42px 42px, auto;
+    }
+
+    body::before,
+    body::after {
+      content: "";
+      position: fixed;
+      z-index: -1;
+      pointer-events: none;
+      opacity: 0.24;
+      filter: saturate(1.25);
+    }
+
+    body::before {
+      right: 3vw;
+      top: 122px;
+      width: 360px;
+      height: 220px;
+      border-radius: 22px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.80), rgba(255,255,255,0.36)),
+        linear-gradient(90deg,
+          transparent 0 8%, var(--cyan) 8% 14%,
+          transparent 14% 22%, var(--blue) 22% 32%,
+          transparent 32% 40%, var(--orange) 40% 54%,
+          transparent 54% 64%, var(--rose) 64% 76%,
+          transparent 76% 84%, var(--green) 84% 94%,
+          transparent 94% 100%);
+      background-size: auto, 100% 72%;
+      background-position: center, left bottom;
+      background-repeat: no-repeat;
+      box-shadow: var(--shadow);
+      transform: rotate(5deg);
+    }
+
+    body::after {
+      left: 4vw;
+      bottom: 90px;
+      width: 280px;
+      height: 150px;
+      border-radius: 22px;
+      background:
+        radial-gradient(circle at 12% 76%, var(--cyan) 0 7px, transparent 8px),
+        radial-gradient(circle at 34% 54%, var(--blue) 0 7px, transparent 8px),
+        radial-gradient(circle at 58% 64%, var(--orange) 0 7px, transparent 8px),
+        radial-gradient(circle at 82% 28%, var(--rose) 0 7px, transparent 8px),
+        linear-gradient(142deg, transparent 0 22%, var(--cyan) 22% 23%, transparent 23% 45%, var(--blue) 45% 46%, transparent 46% 68%, var(--orange) 68% 69%, transparent 69%),
+        linear-gradient(135deg, rgba(255,255,255,0.86), rgba(255,255,255,0.36));
+      box-shadow: var(--shadow);
+      transform: rotate(-6deg);
+    }
+
+    a { color: inherit; }
+    .bg-overlay { display: none; }
+    .container { width: min(1140px, calc(100% - 40px)); margin: 0 auto; }
+
+    .header {
+      position: sticky;
+      top: 14px;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 22px;
+      margin-top: 14px;
+      padding: 14px 16px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.84);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 12px 36px rgba(15, 23, 42, 0.08);
+    }
+
+    .identity { display: flex; align-items: center; gap: 16px; }
+
+    .avatar {
+      width: 74px;
+      height: 74px;
+      object-fit: cover;
+      border-radius: 16px;
+      border: 3px solid #fff;
+      box-shadow: 0 14px 30px rgba(15, 23, 42, 0.18);
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(26px, 4vw, 44px);
+      line-height: 1;
+      letter-spacing: 0;
+    }
+
+    .subtitle {
+      margin: 9px 0 0;
+      max-width: 780px;
+      color: var(--muted);
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+      margin-top: 11px;
+      color: #344054;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .links a {
+      text-decoration: none;
+      color: var(--blue);
+    }
+
+    .lang-switch {
+      display: flex;
+      gap: 8px;
+      padding: 6px;
+      border-radius: 999px;
+      background: #eef2ff;
+      border: 1px solid rgba(37, 99, 235, 0.16);
+    }
+
+    .lang-switch button {
+      min-width: 42px;
+      height: 34px;
+      border: 0;
+      border-radius: 999px;
+      color: #344054;
+      background: transparent;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .lang-switch button.active {
+      color: #fff;
+      background: linear-gradient(135deg, var(--cyan), var(--blue), var(--violet));
+      box-shadow: 0 10px 22px rgba(37, 99, 235, 0.24);
+    }
+
+    .hero {
+      min-height: 92vh;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 34px;
+      align-items: center;
+      padding: clamp(44px, 8vw, 86px) 0 32px;
+    }
+
+    .scroll-stage {
+      position: relative;
+      min-height: 230vh;
+      margin: 18px 0 34px;
+      border-radius: 28px;
+      overflow: clip;
+      background: #050816;
+      color: #fff;
+      box-shadow: var(--shadow);
+    }
+
+    .canvas-sticky {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+    }
+
+    #data-canvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .canvas-copy {
+      position: relative;
+      z-index: 1;
+      width: min(760px, calc(100% - 40px));
+      text-align: center;
+      pointer-events: none;
+    }
+
+    .canvas-copy h2 {
+      margin: 0;
+      color: #fff;
+      font-size: clamp(38px, 7vw, 82px);
+      line-height: 0.98;
+    }
+
+    .canvas-copy p {
+      margin: 18px auto 0;
+      max-width: 640px;
+      color: rgba(255, 255, 255, 0.72);
+      font-size: 18px;
+    }
+
+    .scroll-hint {
+      position: absolute;
+      left: 50%;
+      bottom: 28px;
+      z-index: 1;
+      transform: translateX(-50%);
+      color: rgba(255,255,255,0.64);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+
+    .hero-copy {
+      position: relative;
+      padding: clamp(28px, 5vw, 50px);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background:
+        linear-gradient(135deg, rgba(6,182,212,0.12), rgba(37,99,235,0.10), rgba(249,115,22,0.09)),
+        rgba(255,255,255,0.82);
+      backdrop-filter: blur(18px);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .hero-copy::after {
+      content: "";
+      position: absolute;
+      right: -40px;
+      top: -30px;
+      width: 260px;
+      height: 150px;
+      opacity: 0.22;
+      background:
+        linear-gradient(90deg, var(--cyan) 0 12%, transparent 12% 18%, var(--blue) 18% 34%, transparent 34% 42%, var(--orange) 42% 58%, transparent 58% 66%, var(--rose) 66% 82%, transparent 82%),
+        linear-gradient(180deg, transparent, rgba(255,255,255,0.1));
+      clip-path: polygon(0 100%, 0 54%, 12% 54%, 12% 100%, 18% 100%, 18% 22%, 34% 22%, 34% 100%, 42% 100%, 42% 38%, 58% 38%, 58% 100%, 66% 100%, 66% 8%, 82% 8%, 82% 100%, 100% 100%);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      margin-bottom: 16px;
+      color: var(--blue);
+      font-size: 13px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0;
+    }
+
+    .hero h2 {
+      margin: 0;
+      font-size: clamp(38px, 7vw, 76px);
+      line-height: 0.98;
+      letter-spacing: 0;
+    }
+
+    .hero p {
+      max-width: 690px;
+      margin: 22px 0 0;
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 0 17px;
+      border: 0;
+      border-radius: 12px;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 900;
+      cursor: pointer;
+      background: linear-gradient(135deg, var(--cyan), var(--blue), var(--violet));
+      box-shadow: 0 14px 30px rgba(37, 99, 235, 0.24);
+    }
+
+    .btn.secondary {
+      color: var(--ink);
+      background: #fff;
+      border: 1px solid var(--line);
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.06);
+    }
+
+    .hero-visual {
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: rgba(255,255,255,0.76);
+      backdrop-filter: blur(18px);
+      box-shadow: var(--shadow);
+    }
+
+    .visual-top {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    .metric {
+      padding: 14px;
+      border-radius: 14px;
+      background: #f8fafc;
+      border: 1px solid rgba(148, 163, 184, 0.28);
+    }
+
+    .metric strong { display: block; color: var(--blue); font-size: 24px; line-height: 1; }
+    .metric span { display: block; margin-top: 7px; color: var(--muted); font-size: 12px; font-weight: 700; }
+
+    .chart-card {
+      height: 220px;
+      border-radius: 16px;
+      border: 1px solid rgba(148, 163, 184, 0.28);
+      background:
+        linear-gradient(rgba(15, 23, 42, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(15, 23, 42, 0.08) 1px, transparent 1px),
+        #ffffff;
+      background-size: 36px 36px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .chart-card::before {
+      content: "";
+      position: absolute;
+      inset: 28px;
+      background:
+        radial-gradient(circle at 8% 76%, var(--cyan) 0 7px, transparent 8px),
+        radial-gradient(circle at 26% 58%, var(--blue) 0 7px, transparent 8px),
+        radial-gradient(circle at 46% 42%, var(--orange) 0 7px, transparent 8px),
+        radial-gradient(circle at 66% 52%, var(--rose) 0 7px, transparent 8px),
+        radial-gradient(circle at 88% 24%, var(--green) 0 7px, transparent 8px),
+        linear-gradient(145deg, transparent 0 18%, var(--cyan) 18% 19%, transparent 19% 38%, var(--blue) 38% 39%, transparent 39% 57%, var(--orange) 57% 58%, transparent 58% 74%, var(--rose) 74% 75%, transparent 75%);
+    }
+
+    .card {
+      position: relative;
+      overflow: hidden;
+      margin: 24px 0;
+      padding: clamp(22px, 4vw, 36px);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--panel);
+      backdrop-filter: blur(16px);
+      box-shadow: 0 18px 46px rgba(15, 23, 42, 0.08);
+    }
+
+    .scroll-reveal {
+      transform: translateY(36px);
+      opacity: 0;
+    }
+
+    .gsap-ready .scroll-reveal {
+      will-change: transform, opacity;
+    }
+
+    .motion-item,
+    .motion-left,
+    .motion-right,
+    .motion-scale {
+      will-change: transform, opacity;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0 auto auto 0;
+      width: 6px;
+      height: 100%;
+      background: linear-gradient(180deg, var(--cyan), var(--blue), var(--orange));
+    }
+
+    h2 {
+      margin: 0 0 18px;
+      font-size: clamp(26px, 4vw, 40px);
+      line-height: 1.12;
+      letter-spacing: 0;
+    }
+
+    h3 { margin: 0 0 10px; line-height: 1.25; }
+    p { color: var(--muted); }
+
+    .case {
+      margin-top: 18px;
+      padding: 22px;
+      border: 1px solid rgba(148, 163, 184, 0.28);
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.74);
+      box-shadow: 0 8px 26px rgba(15, 23, 42, 0.05);
+    }
+
+    .impact-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 22px;
+    }
+
+    .impact-card {
+      padding: 22px;
+      border: 1px solid rgba(148, 163, 184, 0.30);
+      border-radius: 18px;
+      background: #fff;
+      box-shadow: 0 14px 34px rgba(15, 23, 42, 0.08);
+    }
+
+    .impact-card strong {
+      display: block;
+      margin: 14px 0 8px;
+      color: var(--blue);
+      font-size: 30px;
+      line-height: 1;
+    }
+
+    .impact-card p {
+      margin: 0;
+    }
+
+    .impact-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 16px;
+    }
+
+    .impact-tags span {
+      padding: 6px 9px;
+      border-radius: 999px;
+      background: #eef2ff;
+      color: var(--blue);
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .stack {
+      display: inline-flex;
+      margin: 0 0 12px;
+      color: var(--blue);
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .bullets {
+      margin: 16px 0 0;
+      padding-left: 20px;
+      color: #344054;
+    }
+
+    .bullets li { margin: 8px 0; }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .proj {
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
+      overflow: hidden;
+      border: 1px solid rgba(148, 163, 184, 0.30);
+      border-radius: 18px;
+      background: #fff;
+      box-shadow: 0 14px 38px rgba(15, 23, 42, 0.10);
+      transition: transform 180ms ease, box-shadow 180ms ease;
+    }
+
+    .proj:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 22px 52px rgba(15, 23, 42, 0.14);
+    }
+
+    .proj-head { padding: 20px 20px 12px; }
+
+    .project-image-wrap {
+      margin: 0;
+      overflow: hidden;
+      border-top: 1px solid rgba(148, 163, 184, 0.22);
+      border-bottom: 1px solid rgba(148, 163, 184, 0.22);
+      background: #eef2ff;
+    }
+
+    .project-image {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      transition: transform 220ms ease;
+    }
+
+    .proj:hover .project-image { transform: scale(1.025); }
+    .proj > p, .proj > .preview, .proj > .bullets { margin-left: 20px; margin-right: 20px; }
+
+    .preview {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 16px;
+      padding: 12px;
+      border-radius: 14px;
+      background: #f8fafc;
+      border: 1px solid rgba(148, 163, 184, 0.22);
+    }
+
+    .preview-label {
+      color: #475467;
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .skills {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .skills > div {
+      padding: 20px;
+      border-radius: 16px;
+      background: #fff;
+      border: 1px solid rgba(148, 163, 184, 0.28);
+    }
+
+    .skills h4 { margin: 0 0 10px; font-size: 18px; }
+
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    .contact-panel {
+      margin: 18px 0;
+      padding: 16px;
+      border-radius: 16px;
+      background: #eef2ff;
+      border: 1px solid rgba(37, 99, 235, 0.18);
+    }
+
+    .contact-form {
+      margin-top: 20px;
+      display: grid;
+      gap: 12px;
+    }
+
+    .row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    input, textarea {
+      width: 100%;
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      border-radius: 14px;
+      padding: 13px 14px;
+      color: var(--ink);
+      background: #fff;
+      font: inherit;
+    }
+
+    input:focus, textarea:focus {
+      outline: 3px solid rgba(6, 182, 212, 0.22);
+      border-color: var(--cyan);
+    }
+
+    .calendar-card {
+      padding: 18px;
+      border: 1px solid rgba(148, 163, 184, 0.30);
+      border-radius: 18px;
+      background: #fff;
+      box-shadow: 0 14px 34px rgba(15, 23, 42, 0.08);
+    }
+
+    .calendar-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .calendar-head h3 { margin: 0; }
+
+    .calendar-nav {
+      display: flex;
+      gap: 8px;
+    }
+
+    .calendar-nav button {
+      width: 36px;
+      height: 36px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: #f8fafc;
+      color: var(--ink);
+      font-weight: 900;
+      cursor: pointer;
+    }
+
+    .calendar-week,
+    .calendar-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 8px;
+    }
+
+    .calendar-week span {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 900;
+      text-align: center;
+    }
+
+    .day {
+      min-height: 48px;
+      border: 1px solid rgba(148, 163, 184, 0.28);
+      border-radius: 12px;
+      background: #f8fafc;
+      color: #344054;
+      font-weight: 800;
+      cursor: default;
+    }
+
+    .day.blank {
+      visibility: hidden;
+    }
+
+    .day.available {
+      cursor: pointer;
+      color: #fff;
+      background: linear-gradient(135deg, var(--green), var(--cyan));
+      border-color: transparent;
+      box-shadow: 0 10px 22px rgba(22, 163, 74, 0.22);
+    }
+
+    .day.tentative {
+      color: #7c2d12;
+      background: #ffedd5;
+      border-color: #fed7aa;
+    }
+
+    .selected-slot {
+      margin-top: 16px;
+      padding: 14px;
+      border-radius: 14px;
+      background: #f0fdfa;
+      border: 1px solid rgba(6, 182, 212, 0.26);
+      color: #0f766e;
+      font-weight: 800;
+    }
+
+    .time-slots {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .time-slots a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 36px;
+      border-radius: 10px;
+      color: #fff;
+      text-decoration: none;
+      background: linear-gradient(135deg, var(--green), var(--cyan));
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .legend i {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      margin-right: 6px;
+      border-radius: 50%;
+      background: #cbd5e1;
+    }
+
+    .legend .free i { background: var(--green); }
+    .legend .maybe i { background: var(--orange); }
+
+    .footer {
+      padding: 24px 0 46px;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    @media (max-width: 980px) {
+      .header, .identity { align-items: flex-start; flex-direction: column; }
+      .hero, .grid, .skills, .contact-layout, .impact-grid { grid-template-columns: 1fr; }
+      .hero-visual { order: -1; }
+      .row { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 560px) {
+      .container { width: min(100% - 24px, 1140px); }
+      .avatar { width: 70px; height: 70px; }
+      .links span { display: none; }
+      .preview { align-items: flex-start; flex-direction: column; }
+      .btn { width: 100%; }
+      .calendar-week, .calendar-grid { gap: 5px; }
+      .day { min-height: 42px; border-radius: 10px; }
+      .time-slots { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
 </head>
 
 <body>
@@ -19,19 +782,15 @@
       <div>
         <h1>Abdelkader Bouzourine</h1>
         <p class="subtitle" data-i18n="title">
-          Analyste en données & intelligence d’affaires • Power BI • Python • Salesforce NPSP
+          Analyste en donnees & intelligence d'affaires - Power BI - Python - Salesforce NPSP
         </p>
 
         <div class="links">
           <a href="mailto:Abdel.Bouzourine.ti@gmail.com">Abdel.Bouzourine.ti@gmail.com</a>
-          <span>•</span>
+          <span>-</span>
           <a href="tel:+14382213326">+1 438 221 3326</a>
-          <span>•</span>
+          <span>-</span>
           <a target="_blank" rel="noopener" href="https://www.linkedin.com/in/abdelkader-bouzourine-data-analyst">LinkedIn</a>
-
-          <!-- CV désactivé temporairement -->
-          <!-- <span>•</span>
-          <a href="assets/projets/CV_Abdelkader_Bouzourine_Oct_2025.pdf" target="_blank" rel="noopener" data-i18n="cv">Télécharger mon CV (PDF)</a> -->
         </div>
       </div>
     </div>
@@ -44,97 +803,112 @@
   </header>
 
   <main class="container">
+    <section class="hero" aria-label="Presentation principale">
+      <div class="hero-copy">
+        <span class="eyebrow">Data Analyst & BI Consultant</span>
+        <h2>Transformer les donnees en decisions claires.</h2>
+        <p>
+          Je cree des tableaux de bord Power BI, automatise les pipelines de donnees et aide les equipes a piloter leurs indicateurs avec confiance.
+        </p>
+        <div class="hero-actions">
+          <a class="btn" href="#projects">Voir mes projets</a>
+          <a class="btn secondary" href="#contact">Planifier un rendez-vous</a>
+        </div>
+      </div>
 
-    <section id="intro" class="card">
+      <aside class="hero-visual" aria-label="Indicateurs de performance">
+        <div class="visual-top">
+          <div class="metric"><strong>40k+</strong><span>records optimises</span></div>
+          <div class="metric"><strong>10+</strong><span>dashboards BI</span></div>
+          <div class="metric"><strong>-50%</strong><span>delais analyse</span></div>
+        </div>
+        <div class="chart-card" aria-hidden="true"></div>
+      </aside>
+    </section>
+
+    <section class="scroll-stage" aria-label="Animation data au scroll">
+      <div class="canvas-sticky">
+        <canvas id="data-canvas"></canvas>
+        <div class="canvas-copy">
+          <span class="eyebrow">Data storytelling</span>
+          <h2>Des signaux bruts aux insights actionnables.</h2>
+          <p>Une experience visuelle inspiree des landing pages Apple : donnees, mouvements, KPI et narration fluide au scroll.</p>
+        </div>
+        <div class="scroll-hint">Scroll pour explorer</div>
+      </div>
+    </section>
+
+    <section id="intro" class="card scroll-reveal">
       <h2 data-i18n="intro_h">Profil professionnel</h2>
       <p data-i18n="intro_p">
-        Analyste en données et intelligence d’affaires spécialisé en Power BI, Python et Salesforce NPSP. 
-        J’automatise les pipelines de données, améliore la qualité de l’information et transforme les besoins d’affaires en tableaux de bord clairs et actionnables.
-        À la SPCA Montréal, j’ai optimisé plus de 40 000 enregistrements, livré 10+ tableaux de bord, et réduit de 50 % les délais d’analyse marketing.
+        Analyste en donnees et intelligence d'affaires specialise en Power BI, Python et Salesforce NPSP.
+        J'automatise les pipelines de donnees, ameliore la qualite de l'information et transforme les besoins d'affaires en tableaux de bord clairs et actionnables.
+        A la SPCA Montreal, j'ai optimise plus de 40 000 enregistrements, livre 10+ tableaux de bord, et reduit de 50 % les delais d'analyse marketing.
       </p>
     </section>
 
-    <section id="experience" class="card">
-      <h2 data-i18n="experience_h">Expérience professionnelle</h2>
+    <section id="experience" class="card scroll-reveal">
+      <h2 data-i18n="experience_h">Impact professionnel</h2>
+      <p>
+        Une selection courte de realisations professionnelles qui montre comment je transforme des donnees brutes en outils de decision.
+      </p>
 
-      <article class="case">
-        <h3 data-i18n="exp1_title">Consultant Freelance – Analyse de données & Power BI</h3>
-        <span class="stack" data-i18n="exp1_period">Avril 2026 – Présent | Montréal, QC</span>
-        <p data-i18n="exp1_desc">
-          Réalisation de projets en analyse de données, visualisation et création de tableaux de bord interactifs.
-          Développement de solutions Power BI pour le suivi de performance, l’analyse KPI et l’aide à la décision.
-        </p>
-        <ul class="bullets">
-          <li data-i18n="exp1_b1">Création de dashboards Power BI adaptés aux besoins décisionnels et opérationnels.</li>
-          <li data-i18n="exp1_b2">Nettoyage, transformation et automatisation de données avec Python, SQL et Power Query.</li>
-          <li data-i18n="exp1_b3">Accompagnement des clients dans la structuration et l’exploitation de leurs données d’affaires.</li>
-        </ul>
-      </article>
+      <div class="impact-grid">
+        <article class="impact-card">
+          <span class="stack">Freelance BI - 2026 a present</span>
+          <h3>Dashboards decisionnels pour clients</h3>
+          <strong>Power BI</strong>
+          <p>Creation de rapports interactifs pour suivre les KPI, explorer les donnees et appuyer les decisions operationnelles.</p>
+          <div class="impact-tags">
+            <span>Power BI</span><span>DAX</span><span>Power Query</span>
+          </div>
+        </article>
 
-      <article class="case">
-        <h3 data-i18n="exp2_title">Analyste-Conseiller en Données — SPCA Montréal</h3>
-        <span class="stack" data-i18n="exp2_period">Août 2024 – Avril 2026 | Montréal, QC</span>
-        <p data-i18n="exp2_desc">
-          Analyse de performance, qualité des données CRM, automatisation de processus analytiques
-          et développement de tableaux de bord Power BI pour soutenir les décisions opérationnelles,
-          marketing et financières.
-        </p>
-        <ul class="bullets">
-          <li data-i18n="exp2_b1">Gestion et optimisation de plus de 40 000 enregistrements stratégiques.</li>
-          <li data-i18n="exp2_b2">Développement de plus de 10 tableaux de bord Power BI, réduisant les délais d’analyse de 50 %.</li>
-          <li data-i18n="exp2_b3">Création de pipelines Python pour automatiser les contrôles qualité et la production de rapports.</li>
-          <li data-i18n="exp2_b4">Mise en place d’un système de saisie par scan réduisant de 80 % les erreurs de traitement.</li>
-        </ul>
-      </article>
+        <article class="impact-card">
+          <span class="stack">SPCA Montreal - 2024 a 2026</span>
+          <h3>Automatisation data & reporting</h3>
+          <strong>-50%</strong>
+          <p>Reduction des delais d'analyse marketing grace a des pipelines Python, des controles qualite et 10+ dashboards Power BI.</p>
+          <div class="impact-tags">
+            <span>Python</span><span>Salesforce</span><span>Data quality</span>
+          </div>
+        </article>
 
-      <article class="case">
-        <h3 data-i18n="exp3_title">Analyste Power BI — LB Technologie</h3>
-        <span class="stack" data-i18n="exp3_period">Mars 2023 – Août 2024 | Montréal, QC</span>
-        <p data-i18n="exp3_desc">
-          Conception de modèles de données, création de rapports Power BI et optimisation de flux ETL
-          pour répondre aux besoins clients en intelligence d’affaires.
-        </p>
-        <ul class="bullets">
-          <li data-i18n="exp3_b1">Création de rapports Power BI interactifs adaptés aux besoins métiers.</li>
-          <li data-i18n="exp3_b2">Optimisation des flux ETL avec Power Query.</li>
-          <li data-i18n="exp3_b3">Réduction du temps de préparation des données de 30 %.</li>
-        </ul>
-      </article>
+        <article class="impact-card">
+          <span class="stack">LB Technologie - 2023 a 2024</span>
+          <h3>Modelisation et optimisation BI</h3>
+          <strong>-30%</strong>
+          <p>Reduction du temps de preparation des donnees par l'optimisation des flux ETL et la creation de modeles Power BI.</p>
+          <div class="impact-tags">
+            <span>ETL</span><span>SQL</span><span>Modelisation</span>
+          </div>
+        </article>
+      </div>
     </section>
 
-    <section id="projects" class="card">
+    <section id="projects" class="card scroll-reveal">
       <h2 data-i18n="projects_h">Projets analytiques & tableaux de bord</h2>
 
       <div class="grid">
-
         <article class="proj">
           <div class="proj-head">
             <h3>Data Job Market Trends & Skills Analysis</h3>
-            <span class="stack">Power BI • LinkedIn Data • Job Market Analytics • KPI</span>
+            <span class="stack">Power BI - LinkedIn Data - Job Market Analytics - KPI</span>
           </div>
-<div class="project-image-wrap">
-  <img 
-    src="assets/img/projects/Data Job Market Trends & Skills Analysis.jpg" 
-    alt="Aperçu du dashboard Data Job Market Trends & Skills Analysis"
-    class="project-image"
-  >
-</div>
+          <div class="project-image-wrap">
+            <img src="assets/img/projects/Data Job Market Trends & Skills Analysis.jpg" alt="Apercu du dashboard Data Job Market Trends & Skills Analysis" class="project-image">
+          </div>
           <p data-i18n="jobmarket_desc">
-            Tableau de bord Power BI conçu pour analyser les tendances du marché de l’emploi en données
-            à partir d’offres LinkedIn. Le projet permet d’identifier les compétences les plus demandées,
-            les pays les plus actifs, les types de postes, les entreprises qui recrutent et l’évolution des offres
-            sur une période donnée.
+            Tableau de bord Power BI concu pour analyser les tendances du marche de l'emploi en donnees a partir d'offres LinkedIn.
           </p>
-
           <div class="preview">
             <div class="preview-label" data-i18n="project_powerbi">Projet Power BI</div>
             <a class="btn" href="assets/projets/Data Job Market Trends & Skills Analysis.pdf" target="_blank" rel="noopener" data-i18n="open_pdf">Ouvrir le PDF</a>
           </div>
-
           <ul class="bullets">
-            <li data-i18n="jobmarket_b1">Analyse de 278 offres d’emploi LinkedIn sur la période septembre–octobre 2025.</li>
-            <li data-i18n="jobmarket_b2">Identification des outils les plus demandés : Excel, Power BI, Tableau, Jira et PowerPoint.</li>
-            <li data-i18n="jobmarket_b3">Création de KPI dynamiques : total d’offres, offres MTD, croissance MoM et compétence la plus demandée.</li>
+            <li data-i18n="jobmarket_b1">Analyse de 278 offres d'emploi LinkedIn sur la periode septembre-octobre 2025.</li>
+            <li data-i18n="jobmarket_b2">Identification des outils les plus demandes : Excel, Power BI, Tableau, Jira et PowerPoint.</li>
+            <li data-i18n="jobmarket_b3">Creation de KPI dynamiques : total d'offres, offres MTD, croissance MoM et competence la plus demandee.</li>
             <li data-i18n="jobmarket_b4">Analyse par pays, type de poste, entreprise, logiciel et certification.</li>
           </ul>
         </article>
@@ -142,160 +916,507 @@
         <article class="proj">
           <div class="proj-head">
             <h3>HR Attendance Dashboard Performance</h3>
-            <span class="stack">Power BI • DAX • HR Analytics • Performance Monitoring</span>
+            <span class="stack">Power BI - DAX - HR Analytics - Performance Monitoring</span>
           </div>
-<div class="project-image-wrap">
-  <img 
-    src="assets/img/projects/HR_Attendance_Dashboard_performance.jpg" 
-    alt="Aperçu du dashboard HR Attendance Dashboard Performance"
-    class="project-image"
-  >
-</div>
+          <div class="project-image-wrap">
+            <img src="assets/img/projects/HR_Attendance_Dashboard_performance.jpg" alt="Apercu du dashboard HR Attendance Dashboard Performance" class="project-image">
+          </div>
           <p data-i18n="hr_desc">
-            Tableau de bord RH développé pour suivre la performance de présence des employés,
-            les absences, les retards, les départs anticipés et les congés. Le rapport permet une lecture
-            rapide des indicateurs clés par mois, département, pays et statut de présence.
+            Tableau de bord RH developpe pour suivre la performance de presence des employes, les absences, les retards et les conges.
           </p>
-
           <div class="preview">
             <div class="preview-label" data-i18n="project_powerbi">Projet Power BI</div>
             <a class="btn" href="assets/projets/HR_Attendance_Dashboard_performance.pdf" target="_blank" rel="noopener" data-i18n="open_pdf">Ouvrir le PDF</a>
           </div>
-
           <ul class="bullets">
-            <li data-i18n="hr_b1">Suivi de 140 865 présences à l’heure et d’un taux de présence global de 66,4 %.</li>
-            <li data-i18n="hr_b2">Analyse du taux d’absence, des retards, des départs anticipés et des congés.</li>
-            <li data-i18n="hr_b3">Création de mesures DAX MTD, PMTD et MoM pour suivre l’évolution mensuelle.</li>
-            <li data-i18n="hr_b4">Segmentation par département, pays, année et statut de présence.</li>
+            <li data-i18n="hr_b1">Suivi de 140 865 presences a l'heure et d'un taux de presence global de 66,4 %.</li>
+            <li data-i18n="hr_b2">Analyse du taux d'absence, des retards, des departs anticipes et des conges.</li>
+            <li data-i18n="hr_b3">Creation de mesures DAX MTD, PMTD et MoM pour suivre l'evolution mensuelle.</li>
+            <li data-i18n="hr_b4">Segmentation par departement, pays, annee et statut de presence.</li>
           </ul>
         </article>
 
         <article class="proj">
           <div class="proj-head">
             <h3>Global Tea Trade Analytics</h3>
-            <span class="stack">Power BI • SQL/SQLite • Power Query • Trade Analytics</span>
+            <span class="stack">Power BI - SQL/SQLite - Power Query - Trade Analytics</span>
           </div>
-<div class="project-image-wrap">
-  <img 
-    src="assets/img/projects/Global Tea Trade Analytics.jpg" 
-    alt="Aperçu du dashboard Global Tea Trade Analytics"
-    class="project-image"
-  >
-</div>
+          <div class="project-image-wrap">
+            <img src="assets/img/projects/Global Tea Trade Analytics.jpg" alt="Apercu du dashboard Global Tea Trade Analytics" class="project-image">
+          </div>
           <p data-i18n="tea_desc">
-            Tableau de bord analytique sur le commerce mondial du thé, couvrant les exportations,
-            importations, tendances annuelles, principaux pays exportateurs/importateurs et écart commercial.
-            Le projet met en valeur un processus complet : base SQLite, ETL Power Query, modélisation
-            et visualisation Power BI.
+            Tableau de bord analytique sur le commerce mondial du the : exportations, importations, tendances annuelles et ecart commercial.
           </p>
-
           <div class="preview">
             <div class="preview-label" data-i18n="project_powerbi">Projet Power BI</div>
             <a class="btn" href="assets/projets/Global Tea Trade Analytics.pdf" target="_blank" rel="noopener" data-i18n="open_pdf">Ouvrir le PDF</a>
           </div>
-
           <ul class="bullets">
-            <li data-i18n="tea_b1">Analyse des exportations et importations mondiales sur plusieurs années.</li>
+            <li data-i18n="tea_b1">Analyse des exportations et importations mondiales sur plusieurs annees.</li>
             <li data-i18n="tea_b2">KPI principaux : export total, import total, YoY export, YoY import et trade gap.</li>
             <li data-i18n="tea_b3">Classement des principaux exportateurs : Chine, Kenya, Sri Lanka, Inde et Allemagne.</li>
-            <li data-i18n="tea_b4">Création d’un dashboard exécutif avec navigation Global, Import et Export.</li>
+            <li data-i18n="tea_b4">Creation d'un dashboard executif avec navigation Global, Import et Export.</li>
           </ul>
         </article>
-
       </div>
     </section>
 
-    <section id="skills" class="card">
-      <h2 data-i18n="skills_h">Compétences</h2>
+    <section id="skills" class="card scroll-reveal">
+      <h2 data-i18n="skills_h">Competences</h2>
 
       <div class="skills">
         <div>
           <h4 data-i18n="data_bi_h">Data & BI</h4>
           <ul>
-            <li data-i18n="data_bi_b1">Modélisation, prévisions, segmentation (K-means)</li>
-            <li data-i18n="data_bi_b2">Analyses prédictives, storytelling, data quality</li>
+            <li data-i18n="data_bi_b1">Modelisation, previsions, segmentation (K-means)</li>
+            <li data-i18n="data_bi_b2">Analyses predictives, storytelling, data quality</li>
           </ul>
         </div>
 
         <div>
           <h4 data-i18n="tools_h">Outils</h4>
           <ul>
-            <li data-i18n="tools_b1">Power BI, Tableau, Excel avancé</li>
+            <li data-i18n="tools_b1">Power BI, Tableau, Excel avance</li>
             <li data-i18n="tools_b2">Python (Pandas, NumPy), Power Query, SQL</li>
             <li data-i18n="tools_b3">Salesforce NPSP, Donorbox, Plauti Deduplicate</li>
           </ul>
         </div>
 
         <div>
-          <h4 data-i18n="skills_soft_h">Compétences transversales</h4>
+          <h4 data-i18n="skills_soft_h">Competences transversales</h4>
           <ul>
             <li data-i18n="skills_soft_1">Traduction des besoins en solutions</li>
             <li data-i18n="skills_soft_2">Gestion agile, formation utilisateurs</li>
-            <li data-i18n="skills_soft_3">Collaboration inter-équipes (TI, marketing, finances)</li>
+            <li data-i18n="skills_soft_3">Collaboration inter-equipes (TI, marketing, finances)</li>
           </ul>
         </div>
       </div>
     </section>
 
-    <section id="cases" class="card">
-      <h2 data-i18n="cases_h">Études de cas</h2>
+    <section id="contact" class="card scroll-reveal">
+      <h2 data-i18n="contact_h">Contact & disponibilites</h2>
 
-      <article class="case">
-        <h3 data-i18n="case1_h">SPCA Montréal — Pipeline Python & Power BI</h3>
-        <p data-i18n="case1_p">
-          Automatisation de bout en bout (imports Donorbox/PayPal/Benevity → nettoyage Python → chargement Salesforce → tableaux de bord Power BI).
-          Résultats : −50 % délais d’analyse, −80 % erreurs, 10+ tableaux de bord stratégiques.
-          Gestion de +40 000 enregistrements Salesforce avec contrôles qualité automatisés.
-        </p>
-      </article>
+      <div class="contact-layout">
+        <div>
+          <p data-i18n="contact_p">
+            Choisissez une journee disponible dans le calendrier ou envoyez-moi un message directement.
+          </p>
 
-      <article class="case">
-        <h3 data-i18n="case2_h">Système de code-barres pour la saisie</h3>
-        <p data-i18n="case2_p">
-          Mise en place d’un flux de saisie par scan pour les opérations. Résultat : réduction de 80 % des erreurs et accélération du traitement.
-        </p>
-      </article>
+          <button id="reveal-contact" class="btn" data-i18n="contact_btn">Afficher telephone & courriel</button>
 
-      <article class="case">
-        <h3 data-i18n="case3_h">Segmentation donateurs — K-means (10 000+)</h3>
-        <p data-i18n="case3_p">
-          Clustering comportemental (montants, fréquence, récence) pour personnaliser les campagnes.
-          Amélioration du ciblage et des taux de conversion grâce à des segments actionnables.
-        </p>
-      </article>
-    </section>
+          <div id="contact-panel" class="contact-panel" hidden>
+            <p><strong data-i18n="phone">Telephone</strong> : <a href="tel:+14382213326">+1 438 221 3326</a></p>
+            <p><strong>Email</strong> : <a href="mailto:Abdel.Bouzourine.ti@gmail.com">Abdel.Bouzourine.ti@gmail.com</a></p>
+          </div>
 
-    <section id="contact" class="card">
-      <h2 data-i18n="contact_h">Contact</h2>
-
-      <p data-i18n="contact_p">
-        Cliquez sur le bouton pour afficher les coordonnées directes.
-      </p>
-
-      <button id="reveal-contact" class="btn" data-i18n="contact_btn">Afficher téléphone & courriel</button>
-
-      <div id="contact-panel" class="contact-panel" hidden>
-        <p><strong data-i18n="phone">Téléphone</strong> : <a href="tel:+14382213326">+1 438 221 3326</a></p>
-        <p><strong>Email</strong> : <a href="mailto:Abdel.Bouzourine.ti@gmail.com">Abdel.Bouzourine.ti@gmail.com</a></p>
-      </div>
-
-      <form class="contact-form" onsubmit="sendMessage(event)">
-        <div class="row">
-          <input type="text" name="name" placeholder="Votre nom" required>
-          <input type="email" name="email" placeholder="Votre email" required>
+          <form class="contact-form" onsubmit="sendMessage(event)">
+            <div class="row">
+              <input type="text" name="name" placeholder="Votre nom" required>
+              <input type="email" name="email" placeholder="Votre email" required>
+            </div>
+            <textarea name="message" rows="4" placeholder="Votre message"></textarea>
+            <button class="btn" type="submit" data-i18n="send">Envoyer</button>
+          </form>
         </div>
-        <textarea name="message" rows="4" placeholder="Votre message"></textarea>
-        <button class="btn" type="submit" data-i18n="send">Envoyer</button>
-      </form>
-    </section>
 
+        <aside class="calendar-card" aria-label="Calendrier de disponibilites">
+          <div class="calendar-head">
+            <div>
+              <h3>Calendrier</h3>
+              <span class="stack">Disponibilites indicatives</span>
+            </div>
+            <div class="calendar-nav">
+              <button type="button" id="prev-month" aria-label="Mois precedent">&lt;</button>
+              <button type="button" id="next-month" aria-label="Mois suivant">&gt;</button>
+            </div>
+          </div>
+
+          <h4 id="calendar-title"></h4>
+          <div class="calendar-week" aria-hidden="true">
+            <span>Lun</span><span>Mar</span><span>Mer</span><span>Jeu</span><span>Ven</span><span>Sam</span><span>Dim</span>
+          </div>
+          <div id="availability-calendar" class="calendar-grid"></div>
+          <div id="selected-slot" class="selected-slot">Selectionnez une date disponible pour preparer un email de rendez-vous.</div>
+          <div class="legend">
+            <span class="free"><i></i>Libre</span>
+            <span>Toutes les dates affichees sont disponibles pour une premiere prise de contact.</span>
+          </div>
+        </aside>
+      </div>
+    </section>
   </main>
 
   <footer class="container footer">
-    <small>© <span id="year"></span> Abdelkader Bouzourine — <span data-i18n="footer">Portfolio d’analyste de données</span></small>
+    <small>&copy; <span id="year"></span> Abdelkader Bouzourine - <span data-i18n="footer">Portfolio d'analyste de donnees</span></small>
   </footer>
 
   <script src="assets/js/i18n.js"></script>
   <script src="assets/js/app.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script>
+    const monthNames = [
+      "Janvier", "Fevrier", "Mars", "Avril", "Mai", "Juin",
+      "Juillet", "Aout", "Septembre", "Octobre", "Novembre", "Decembre"
+    ];
+
+    let calendarDate = new Date();
+    calendarDate.setDate(1);
+
+    function pad(value) {
+      return String(value).padStart(2, "0");
+    }
+
+    function dateKey(year, month, day) {
+      return `${year}-${pad(month + 1)}-${pad(day)}`;
+    }
+
+    function renderCalendar() {
+      const grid = document.getElementById("availability-calendar");
+      const title = document.getElementById("calendar-title");
+      if (!grid || !title) return;
+
+      const year = calendarDate.getFullYear();
+      const month = calendarDate.getMonth();
+      const firstDay = new Date(year, month, 1);
+      const daysInMonth = new Date(year, month + 1, 0).getDate();
+      const mondayBasedStart = (firstDay.getDay() + 6) % 7;
+
+      title.textContent = `${monthNames[month]} ${year}`;
+      grid.innerHTML = "";
+
+      for (let i = 0; i < mondayBasedStart; i += 1) {
+        const blank = document.createElement("button");
+        blank.type = "button";
+        blank.className = "day blank";
+        blank.tabIndex = -1;
+        grid.appendChild(blank);
+      }
+
+      for (let day = 1; day <= daysInMonth; day += 1) {
+        const key = dateKey(year, month, day);
+        const state = "available";
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = `day ${state}`;
+        button.textContent = day;
+        button.setAttribute("aria-label", `${day} ${monthNames[month]} ${year}`);
+
+        button.addEventListener("click", () => selectSlot(key, state));
+
+        grid.appendChild(button);
+      }
+    }
+
+    function selectSlot(key, state) {
+      const output = document.getElementById("selected-slot");
+      const label = state === "available" ? "libre" : "a confirmer";
+      const slots = ["09:00", "10:30", "12:00", "14:00", "15:30", "17:00"];
+      const links = slots.map((slot) => {
+        const mailSubject = encodeURIComponent("Demande de rendez-vous");
+        const mailBody = encodeURIComponent(`Bonjour Abdelkader,\n\nJe souhaite planifier un rendez-vous avec vous le ${key} a ${slot}.\n\nMerci.`);
+        return `<a href="mailto:Abdel.Bouzourine.ti@gmail.com?subject=${mailSubject}&body=${mailBody}">${slot}</a>`;
+      }).join("");
+      output.innerHTML = `Date selectionnee : <strong>${key}</strong> (${label}). Choisissez une plage horaire libre : <div class="time-slots">${links}</div>`;
+    }
+
+    document.getElementById("prev-month")?.addEventListener("click", () => {
+      calendarDate.setMonth(calendarDate.getMonth() - 1);
+      renderCalendar();
+    });
+
+    document.getElementById("next-month")?.addEventListener("click", () => {
+      calendarDate.setMonth(calendarDate.getMonth() + 1);
+      renderCalendar();
+    });
+
+    if (!window.sendMessage) {
+      window.sendMessage = function sendMessage(event) {
+        event.preventDefault();
+        const form = event.currentTarget;
+        const name = form.name.value;
+        const email = form.email.value;
+        const message = form.message.value;
+        const subject = encodeURIComponent(`Message portfolio - ${name}`);
+        const body = encodeURIComponent(`Nom: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
+        window.location.href = `mailto:Abdel.Bouzourine.ti@gmail.com?subject=${subject}&body=${body}`;
+      };
+    }
+
+    renderCalendar();
+
+    const canvas = document.getElementById("data-canvas");
+    const ctx = canvas?.getContext("2d");
+    const frame = { value: 0 };
+
+    function resizeCanvas() {
+      if (!canvas || !ctx) return;
+      const ratio = Math.min(window.devicePixelRatio || 1, 2);
+      const rect = canvas.getBoundingClientRect();
+      canvas.width = Math.floor(rect.width * ratio);
+      canvas.height = Math.floor(rect.height * ratio);
+      ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+      drawDataFrame(frame.value);
+    }
+
+    function drawDataFrame(progress) {
+      if (!canvas || !ctx) return;
+      const rect = canvas.getBoundingClientRect();
+      const w = rect.width;
+      const h = rect.height;
+      const p = Math.max(0, Math.min(1, progress));
+
+      ctx.clearRect(0, 0, w, h);
+      const bg = ctx.createLinearGradient(0, 0, w, h);
+      bg.addColorStop(0, "#050816");
+      bg.addColorStop(0.45, "#0f172a");
+      bg.addColorStop(1, "#111827");
+      ctx.fillStyle = bg;
+      ctx.fillRect(0, 0, w, h);
+
+      ctx.globalAlpha = 0.20;
+      ctx.strokeStyle = "#38bdf8";
+      ctx.lineWidth = 1;
+      const grid = 54;
+      for (let x = -grid; x < w + grid; x += grid) {
+        ctx.beginPath();
+        ctx.moveTo(x + p * 32, 0);
+        ctx.lineTo(x - p * 24, h);
+        ctx.stroke();
+      }
+      for (let y = 0; y < h; y += grid) {
+        ctx.beginPath();
+        ctx.moveTo(0, y + p * 22);
+        ctx.lineTo(w, y - p * 18);
+        ctx.stroke();
+      }
+
+      ctx.globalAlpha = 1;
+      const bars = [0.38, 0.62, 0.50, 0.78, 0.45, 0.88, 0.66, 0.94];
+      const barW = Math.min(46, w / 26);
+      const startX = w * 0.12;
+      const baseY = h * 0.76;
+      bars.forEach((height, index) => {
+        const animated = Math.max(0.05, Math.min(height, height * (p * 1.45 - index * 0.07)));
+        const x = startX + index * barW * 1.75;
+        const y = baseY - animated * h * 0.42;
+        const grad = ctx.createLinearGradient(0, y, 0, baseY);
+        grad.addColorStop(0, index % 2 ? "#8b5cf6" : "#06b6d4");
+        grad.addColorStop(1, index % 2 ? "#f97316" : "#2563eb");
+        ctx.fillStyle = grad;
+        ctx.roundRect(x, y, barW, animated * h * 0.42, 12);
+        ctx.fill();
+      });
+
+      ctx.strokeStyle = "#f97316";
+      ctx.lineWidth = 5;
+      ctx.lineCap = "round";
+      ctx.lineJoin = "round";
+      ctx.beginPath();
+      const points = [];
+      for (let i = 0; i < 9; i += 1) {
+        const x = w * 0.12 + i * (w * 0.76 / 8);
+        const wave = Math.sin(i * 0.92 + p * 4.2) * h * 0.055;
+        const y = h * (0.48 - i * 0.018) + wave - p * h * 0.12;
+        points.push([x, y]);
+        if (i === 0) ctx.moveTo(x, y);
+        else ctx.lineTo(x, y);
+      }
+      ctx.stroke();
+
+      points.forEach(([x, y], i) => {
+        ctx.fillStyle = i % 2 ? "#f97316" : "#22c55e";
+        ctx.beginPath();
+        ctx.arc(x, y, 6 + p * 3, 0, Math.PI * 2);
+        ctx.fill();
+      });
+
+      ctx.globalAlpha = 0.88;
+      ctx.fillStyle = "rgba(255,255,255,0.08)";
+      ctx.roundRect(w * 0.67, h * 0.16, w * 0.22, 92, 18);
+      ctx.fill();
+      ctx.globalAlpha = 1;
+      ctx.fillStyle = "#ffffff";
+      ctx.font = "800 34px Inter, Arial";
+      ctx.fillText(`${Math.round(72 + p * 24)}%`, w * 0.70, h * 0.215);
+      ctx.fillStyle = "rgba(255,255,255,0.62)";
+      ctx.font = "700 13px Inter, Arial";
+      ctx.fillText("INSIGHT READINESS", w * 0.70, h * 0.245);
+    }
+
+    function nativeScrollFallback() {
+      const stage = document.querySelector(".scroll-stage");
+      const reveals = document.querySelectorAll(".scroll-reveal");
+      function update() {
+        if (stage) {
+          const rect = stage.getBoundingClientRect();
+          const total = Math.max(1, rect.height - window.innerHeight);
+          const current = Math.min(Math.max(-rect.top, 0), total);
+          frame.value = current / total;
+          drawDataFrame(frame.value);
+        }
+        reveals.forEach((el) => {
+          const rect = el.getBoundingClientRect();
+          if (rect.top < window.innerHeight * 0.82) {
+            el.style.opacity = "1";
+            el.style.transform = "translateY(0)";
+            el.style.transition = "opacity 700ms ease, transform 700ms ease";
+          }
+        });
+      }
+      window.addEventListener("scroll", update, { passive: true });
+      update();
+    }
+
+    window.addEventListener("resize", resizeCanvas);
+    resizeCanvas();
+
+    if (window.gsap && window.ScrollTrigger) {
+      document.documentElement.classList.add("gsap-ready");
+      gsap.registerPlugin(ScrollTrigger);
+
+      gsap.set(".hero-copy", { opacity: 0, y: 50, scale: 0.98 });
+      gsap.set(".hero-visual", { opacity: 0, y: 70, rotateX: 8, transformPerspective: 900 });
+      gsap.set(".metric", { opacity: 0, y: 20 });
+      gsap.set(".chart-card", { opacity: 0, scale: 0.94 });
+      gsap.set(".scroll-reveal", { opacity: 0, y: 54 });
+      gsap.set(".impact-card, .proj, .skills > div, .calendar-card, .contact-form", { opacity: 0, y: 36 });
+      gsap.set(".project-image", { scale: 1.08 });
+
+      const heroTimeline = gsap.timeline({
+        scrollTrigger: {
+          trigger: ".hero",
+          start: "top 78%",
+          end: "bottom 40%",
+          toggleActions: "play none none reverse"
+        }
+      });
+
+      heroTimeline
+        .to(".hero-copy", { opacity: 1, y: 0, scale: 1, duration: 0.9, ease: "power3.out" })
+        .to(".hero-visual", { opacity: 1, y: 0, rotateX: 0, duration: 0.9, ease: "power3.out" }, "-=0.55")
+        .to(".metric", { opacity: 1, y: 0, duration: 0.45, stagger: 0.12, ease: "power2.out" }, "-=0.35")
+        .to(".chart-card", { opacity: 1, scale: 1, duration: 0.7, ease: "back.out(1.6)" }, "-=0.2");
+
+      gsap.to(".hero-copy", {
+        y: -70,
+        opacity: 0.88,
+        ease: "none",
+        scrollTrigger: {
+          trigger: ".hero",
+          start: "top top",
+          end: "bottom top",
+          scrub: true
+        }
+      });
+
+      gsap.to(".hero-visual", {
+        y: -35,
+        rotate: 1.5,
+        ease: "none",
+        scrollTrigger: {
+          trigger: ".hero",
+          start: "top top",
+          end: "bottom top",
+          scrub: true
+        }
+      });
+
+      gsap.to(frame, {
+        value: 1,
+        ease: "none",
+        scrollTrigger: {
+          trigger: ".scroll-stage",
+          start: "top top",
+          end: "bottom bottom",
+          scrub: true,
+          pin: ".canvas-sticky",
+          anticipatePin: 1
+        },
+        onUpdate: () => drawDataFrame(frame.value)
+      });
+
+      gsap.utils.toArray(".scroll-reveal").forEach((section) => {
+        gsap.timeline({
+          scrollTrigger: {
+            trigger: section,
+            start: "top 82%",
+            end: "bottom 18%",
+            toggleActions: "play none none reverse"
+          }
+        })
+        .to(section, {
+          opacity: 1,
+          y: 0,
+          duration: 0.9,
+          ease: "power2.out"
+        })
+        .to(section.querySelectorAll(".impact-card, .proj, .skills > div, .calendar-card, .contact-form"), {
+          opacity: 1,
+          y: 0,
+          duration: 0.7,
+          stagger: 0.12,
+          ease: "power2.out"
+        }, "-=0.45");
+      });
+
+      gsap.utils.toArray(".project-image").forEach((image) => {
+        gsap.to(image, {
+          scale: 1,
+          yPercent: -4,
+          ease: "none",
+          scrollTrigger: {
+            trigger: image.closest(".proj"),
+            start: "top bottom",
+            end: "bottom top",
+            scrub: true
+          }
+        });
+      });
+
+      gsap.utils.toArray(".impact-card strong").forEach((value) => {
+        gsap.fromTo(value,
+          { scale: 0.86, opacity: 0 },
+          {
+            scale: 1,
+            opacity: 1,
+            duration: 0.7,
+            ease: "back.out(1.8)",
+            scrollTrigger: {
+              trigger: value,
+              start: "top 86%",
+              toggleActions: "play none none reverse"
+            }
+          }
+        );
+      });
+
+      gsap.to(".calendar-card", {
+        y: -18,
+        ease: "none",
+        scrollTrigger: {
+          trigger: "#contact",
+          start: "top bottom",
+          end: "bottom top",
+          scrub: true
+        }
+      });
+
+      ScrollTrigger.create({
+        snap: {
+          snapTo: (progress) => {
+            const points = [0, 0.18, 0.36, 0.55, 0.74, 1];
+            return points.reduce((closest, point) =>
+              Math.abs(point - progress) < Math.abs(closest - progress) ? point : closest
+            , points[0]);
+          },
+          duration: { min: 0.12, max: 0.35 },
+          ease: "power1.inOut"
+        }
+      });
+    } else {
+      nativeScrollFallback();
+    }
+  </script>
 </body>
 </html>
