@@ -182,12 +182,12 @@
     }
 
     .hero {
-      min-height: 92vh;
+      min-height: 112vh;
       display: grid;
       grid-template-columns: 1.1fr 0.9fr;
       gap: 34px;
       align-items: center;
-      padding: clamp(44px, 8vw, 86px) 0 32px;
+      padding: clamp(54px, 9vw, 104px) 0 72px;
     }
 
     .scroll-stage {
@@ -1299,25 +1299,25 @@
         .to(".chart-card", { opacity: 1, scale: 1, duration: 0.7, ease: "back.out(1.6)" }, "-=0.2");
 
       gsap.to(".hero-copy", {
-        y: -70,
-        opacity: 0.88,
+        y: -18,
+        opacity: 1,
         ease: "none",
         scrollTrigger: {
           trigger: ".hero",
           start: "top top",
-          end: "bottom top",
+          end: "bottom 28%",
           scrub: true
         }
       });
 
       gsap.to(".hero-visual", {
-        y: -35,
-        rotate: 1.5,
+        y: -12,
+        rotate: 0.4,
         ease: "none",
         scrollTrigger: {
           trigger: ".hero",
           start: "top top",
-          end: "bottom top",
+          end: "bottom 28%",
           scrub: true
         }
       });
