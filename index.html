@@ -1354,36 +1354,27 @@
         .to(".chart-card", { opacity: 1, scale: 1, duration: 0.7, ease: "back.out(1.6)" }, "-=0.2");
 
       gsap.to(".hero-copy", {
-        y: -18,
+        y: -8,
         opacity: 1,
         ease: "none",
         scrollTrigger: {
           trigger: ".hero",
           start: "top top",
-          end: "bottom 28%",
-          scrub: true
+          end: "bottom 10%",
+          scrub: 0.8
         }
       });
 
       gsap.to(".hero-visual", {
-        y: -12,
-        rotate: 0.4,
+        y: -6,
+        rotate: 0.2,
         ease: "none",
         scrollTrigger: {
           trigger: ".hero",
           start: "top top",
-          end: "bottom 28%",
-          scrub: true
+          end: "bottom 10%",
+          scrub: 0.8
         }
-      });
-
-      ScrollTrigger.create({
-        trigger: ".hero",
-        start: "top top",
-        end: "+=65%",
-        pin: true,
-        pinSpacing: true,
-        anticipatePin: 1
       });
 
       gsap.to(frame, {
@@ -1393,9 +1384,7 @@
           trigger: ".scroll-stage",
           start: "top top",
           end: "bottom bottom",
-          scrub: true,
-          pin: ".canvas-sticky",
-          anticipatePin: 1
+          scrub: 0.6
         },
         onUpdate: () => drawDataFrame(frame.value)
       });
@@ -1466,18 +1455,6 @@
         }
       });
 
-      ScrollTrigger.create({
-        snap: {
-          snapTo: (progress) => {
-            const points = [0, 0.18, 0.36, 0.55, 0.74, 1];
-            return points.reduce((closest, point) =>
-              Math.abs(point - progress) < Math.abs(closest - progress) ? point : closest
-            , points[0]);
-          },
-          duration: { min: 0.12, max: 0.35 },
-          ease: "power1.inOut"
-        }
-      });
     } else {
       nativeScrollFallback();
     }
