@@ -4,19 +4,6 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Abdelkader Bouzourine - Data Analyst & BI</title>
-
-  <!-- ✅ FIX: Meta SEO + Open Graph pour partage LinkedIn -->
-  <meta name="description" content="Portfolio d'Abdelkader Bouzourine, analyste en données et intelligence d'affaires spécialisé Power BI, Python et Salesforce NPSP. Basé à Montréal.">
-  <meta property="og:title" content="Abdelkader Bouzourine – Data Analyst & BI">
-  <meta property="og:description" content="Tableaux de bord Power BI, pipelines Python, Salesforce NPSP. 40k+ enregistrements optimisés, 10+ dashboards livrés.">
-  <meta property="og:type" content="website">
-  <meta property="og:locale" content="fr_CA">
-  <meta name="twitter:card" content="summary_large_image">
-
-  <!-- ✅ FIX: GSAP chargé AVANT le script inline -->
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-
   <link rel="stylesheet" href="assets/css/styles.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -109,18 +96,6 @@
     .bg-overlay { display: none; }
     .container { width: min(1140px, calc(100% - 40px)); margin: 0 auto; }
 
-    /* ✅ FIX: Barre de progression scroll en haut de page */
-    #scroll-progress {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 0%;
-      height: 3px;
-      background: linear-gradient(90deg, var(--cyan), var(--blue), var(--violet));
-      z-index: 100;
-      transition: width 0.05s linear;
-    }
-
     .header {
       position: sticky;
       top: 14px;
@@ -207,7 +182,7 @@
     }
 
     .hero {
-      min-height: 112vh;
+      min-height: 128vh;
       display: grid;
       grid-template-columns: 1.1fr 0.9fr;
       gap: 34px;
@@ -217,8 +192,7 @@
 
     .scroll-stage {
       position: relative;
-      /* ✅ FIX: min-height responsive mobile */
-      min-height: clamp(180vh, 300vw, 300vh);
+      min-height: 230vh;
       margin: 18px 0 34px;
       border-radius: 28px;
       overflow: clip;
@@ -249,8 +223,6 @@
       width: min(760px, calc(100% - 40px));
       text-align: center;
       pointer-events: none;
-      /* ✅ FIX: fade-out du texte après 20% de progression via JS */
-      transition: opacity 0.3s ease;
     }
 
     .canvas-copy h2 {
@@ -492,7 +464,9 @@
       line-height: 1;
     }
 
-    .impact-card p { margin: 0; }
+    .impact-card p {
+      margin: 0;
+    }
 
     .impact-tags {
       display: flex;
@@ -703,7 +677,9 @@
       cursor: default;
     }
 
-    .day.blank { visibility: hidden; }
+    .day.blank {
+      visibility: hidden;
+    }
 
     .day.available {
       cursor: pointer;
@@ -711,14 +687,6 @@
       background: linear-gradient(135deg, var(--green), var(--cyan));
       border-color: transparent;
       box-shadow: 0 10px 22px rgba(22, 163, 74, 0.22);
-    }
-
-    /* ✅ FIX: style pour les weekends */
-    .day.weekend {
-      background: #f1f5f9;
-      color: #94a3b8;
-      cursor: not-allowed;
-      opacity: 0.6;
     }
 
     .day.tentative {
@@ -778,23 +746,11 @@
 
     .legend .free i { background: var(--green); }
     .legend .maybe i { background: var(--orange); }
-    .legend .weekend-legend i { background: #94a3b8; }
 
     .footer {
       padding: 24px 0 46px;
       color: var(--muted);
       text-align: center;
-    }
-
-    /* ✅ FIX: prefers-reduced-motion */
-    @media (prefers-reduced-motion: reduce) {
-      .scroll-reveal {
-        transform: none !important;
-        opacity: 1 !important;
-        transition: none !important;
-      }
-      .proj { transition: none; }
-      .project-image { transition: none; }
     }
 
     @media (max-width: 980px) {
@@ -818,9 +774,6 @@
 </head>
 
 <body>
-  <!-- ✅ NOUVEAU: Barre de progression scroll -->
-  <div id="scroll-progress" aria-hidden="true"></div>
-
   <div class="bg-overlay"></div>
 
   <header class="container header">
@@ -831,6 +784,7 @@
         <p class="subtitle" data-i18n="title">
           Analyste en donnees & intelligence d'affaires - Power BI - Python - Salesforce NPSP
         </p>
+
         <div class="links">
           <a href="mailto:Abdel.Bouzourine.ti@gmail.com">Abdel.Bouzourine.ti@gmail.com</a>
           <span>-</span>
@@ -851,14 +805,14 @@
   <main class="container">
     <section class="hero" aria-label="Presentation principale">
       <div class="hero-copy">
-        <span class="eyebrow">Data Analyst & BI Consultant</span>
-        <h2>Transformer les donnees en decisions claires.</h2>
-        <p>
+        <span class="eyebrow" data-landing-i18n="hero_eyebrow">Data Analyst & BI Consultant</span>
+        <h2 data-landing-i18n="hero_title">Transformer les donnees en decisions claires.</h2>
+        <p data-landing-i18n="hero_desc">
           Je cree des tableaux de bord Power BI, automatise les pipelines de donnees et aide les equipes a piloter leurs indicateurs avec confiance.
         </p>
         <div class="hero-actions">
-          <a class="btn" href="#projects">Voir mes projets</a>
-          <a class="btn secondary" href="#contact">Planifier un rendez-vous</a>
+          <a class="btn" href="#projects" data-landing-i18n="hero_projects">Voir mes projets</a>
+          <a class="btn secondary" href="#contact" data-landing-i18n="hero_meeting">Planifier un rendez-vous</a>
         </div>
       </div>
 
@@ -875,12 +829,12 @@
     <section class="scroll-stage" aria-label="Animation data au scroll">
       <div class="canvas-sticky">
         <canvas id="data-canvas"></canvas>
-        <div class="canvas-copy" id="canvas-copy">
-          <span class="eyebrow">Data storytelling</span>
-          <h2>Des signaux bruts aux insights actionnables.</h2>
-          <p>Une experience visuelle inspiree des landing pages Apple : donnees, mouvements, KPI et narration fluide au scroll.</p>
+        <div class="canvas-copy">
+          <span class="eyebrow" data-landing-i18n="story_eyebrow">Data storytelling</span>
+          <h2 data-landing-i18n="story_title">Des signaux bruts aux insights actionnables.</h2>
+          <p data-landing-i18n="story_desc">Une experience visuelle inspiree des landing pages Apple : donnees, mouvements, KPI et narration fluide au scroll.</p>
         </div>
-        <div class="scroll-hint">Scroll pour explorer</div>
+        <div class="scroll-hint" data-landing-i18n="story_scroll">Scroll pour explorer</div>
       </div>
     </section>
 
@@ -895,7 +849,9 @@
 
     <section id="experience" class="card scroll-reveal">
       <h2 data-i18n="experience_h">Impact professionnel</h2>
-      <p>Une selection courte de realisations professionnelles qui montre comment je transforme des donnees brutes en outils de decision.</p>
+      <p>
+        Une selection courte de realisations professionnelles qui montre comment je transforme des donnees brutes en outils de decision.
+      </p>
 
       <div class="impact-grid">
         <article class="impact-card">
@@ -940,10 +896,11 @@
             <span class="stack">Power BI - LinkedIn Data - Job Market Analytics - KPI</span>
           </div>
           <div class="project-image-wrap">
-            <!-- ✅ FIX: loading="lazy" sur toutes les images projet -->
-            <img src="assets/img/projects/Data Job Market Trends & Skills Analysis.jpg" alt="Apercu du dashboard Data Job Market Trends & Skills Analysis" class="project-image" loading="lazy">
+            <img src="assets/img/projects/Data Job Market Trends & Skills Analysis.jpg" alt="Apercu du dashboard Data Job Market Trends & Skills Analysis" class="project-image">
           </div>
-          <p data-i18n="jobmarket_desc">Tableau de bord Power BI concu pour analyser les tendances du marche de l'emploi en donnees a partir d'offres LinkedIn.</p>
+          <p data-i18n="jobmarket_desc">
+            Tableau de bord Power BI concu pour analyser les tendances du marche de l'emploi en donnees a partir d'offres LinkedIn.
+          </p>
           <div class="preview">
             <div class="preview-label" data-i18n="project_powerbi">Projet Power BI</div>
             <a class="btn" href="assets/projets/Data Job Market Trends & Skills Analysis.pdf" target="_blank" rel="noopener" data-i18n="open_pdf">Ouvrir le PDF</a>
@@ -962,9 +919,11 @@
             <span class="stack">Power BI - DAX - HR Analytics - Performance Monitoring</span>
           </div>
           <div class="project-image-wrap">
-            <img src="assets/img/projects/HR_Attendance_Dashboard_performance.jpg" alt="Apercu du dashboard HR Attendance Dashboard Performance" class="project-image" loading="lazy">
+            <img src="assets/img/projects/HR_Attendance_Dashboard_performance.jpg" alt="Apercu du dashboard HR Attendance Dashboard Performance" class="project-image">
           </div>
-          <p data-i18n="hr_desc">Tableau de bord RH developpe pour suivre la performance de presence des employes, les absences, les retards et les conges.</p>
+          <p data-i18n="hr_desc">
+            Tableau de bord RH developpe pour suivre la performance de presence des employes, les absences, les retards et les conges.
+          </p>
           <div class="preview">
             <div class="preview-label" data-i18n="project_powerbi">Projet Power BI</div>
             <a class="btn" href="assets/projets/HR_Attendance_Dashboard_performance.pdf" target="_blank" rel="noopener" data-i18n="open_pdf">Ouvrir le PDF</a>
@@ -983,9 +942,11 @@
             <span class="stack">Power BI - SQL/SQLite - Power Query - Trade Analytics</span>
           </div>
           <div class="project-image-wrap">
-            <img src="assets/img/projects/Global Tea Trade Analytics.jpg" alt="Apercu du dashboard Global Tea Trade Analytics" class="project-image" loading="lazy">
+            <img src="assets/img/projects/Global Tea Trade Analytics.jpg" alt="Apercu du dashboard Global Tea Trade Analytics" class="project-image">
           </div>
-          <p data-i18n="tea_desc">Tableau de bord analytique sur le commerce mondial du the : exportations, importations, tendances annuelles et ecart commercial.</p>
+          <p data-i18n="tea_desc">
+            Tableau de bord analytique sur le commerce mondial du the : exportations, importations, tendances annuelles et ecart commercial.
+          </p>
           <div class="preview">
             <div class="preview-label" data-i18n="project_powerbi">Projet Power BI</div>
             <a class="btn" href="assets/projets/Global Tea Trade Analytics.pdf" target="_blank" rel="noopener" data-i18n="open_pdf">Ouvrir le PDF</a>
@@ -1002,6 +963,7 @@
 
     <section id="skills" class="card scroll-reveal">
       <h2 data-i18n="skills_h">Competences</h2>
+
       <div class="skills">
         <div>
           <h4 data-i18n="data_bi_h">Data & BI</h4>
@@ -1010,6 +972,7 @@
             <li data-i18n="data_bi_b2">Analyses predictives, storytelling, data quality</li>
           </ul>
         </div>
+
         <div>
           <h4 data-i18n="tools_h">Outils</h4>
           <ul>
@@ -1018,6 +981,7 @@
             <li data-i18n="tools_b3">Salesforce NPSP, Donorbox, Plauti Deduplicate</li>
           </ul>
         </div>
+
         <div>
           <h4 data-i18n="skills_soft_h">Competences transversales</h4>
           <ul>
@@ -1034,9 +998,10 @@
 
       <div class="contact-layout">
         <div>
-          <p data-i18n="contact_p">Choisissez une journee disponible dans le calendrier ou envoyez-moi un message directement.</p>
+          <p data-i18n="contact_p">
+            Choisissez une journee disponible dans le calendrier ou envoyez-moi un message directement.
+          </p>
 
-          <!-- ✅ FIX: toggle vrai (affiche ET cache) -->
           <button id="reveal-contact" class="btn" data-i18n="contact_btn">Afficher telephone & courriel</button>
 
           <div id="contact-panel" class="contact-panel" hidden>
@@ -1044,7 +1009,7 @@
             <p><strong>Email</strong> : <a href="mailto:Abdel.Bouzourine.ti@gmail.com">Abdel.Bouzourine.ti@gmail.com</a></p>
           </div>
 
-          <form class="contact-form" onsubmit="handleContactForm(event)">
+          <form class="contact-form" onsubmit="sendMessage(event)">
             <div class="row">
               <input type="text" name="name" placeholder="Votre nom" required>
               <input type="email" name="email" placeholder="Votre email" required>
@@ -1074,7 +1039,7 @@
           <div id="selected-slot" class="selected-slot">Selectionnez une date disponible pour preparer un email de rendez-vous.</div>
           <div class="legend">
             <span class="free"><i></i>Libre</span>
-            <span class="weekend-legend"><i></i>Weekend (indisponible)</span>
+            <span>Toutes les dates affichees sont disponibles pour une premiere prise de contact.</span>
           </div>
         </aside>
       </div>
@@ -1087,56 +1052,24 @@
 
   <script src="assets/js/i18n.js"></script>
   <script src="assets/js/app.js"></script>
-
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
   <script>
-    // ─────────────────────────────────────────────
-    // ✅ FIX: Footer year — guard null-safe
-    // ─────────────────────────────────────────────
-    const yearEl = document.getElementById("year");
-    if (yearEl) yearEl.textContent = new Date().getFullYear();
-
-    // ─────────────────────────────────────────────
-    // ✅ FIX: Toggle contact panel (affiche ET cache)
-    // ─────────────────────────────────────────────
-    const revealBtn = document.getElementById("reveal-contact");
-    const contactPanel = document.getElementById("contact-panel");
-    if (revealBtn && contactPanel) {
-      revealBtn.addEventListener("click", () => {
-        const isHidden = contactPanel.hidden;
-        contactPanel.hidden = !isHidden;
-        revealBtn.textContent = isHidden
-          ? "Masquer telephone & courriel"
-          : "Afficher telephone & courriel";
-      });
-    }
-
-    // ─────────────────────────────────────────────
-    // ✅ FIX: Formulaire contact — nom unique sans guard window
-    // ─────────────────────────────────────────────
-    function handleContactForm(event) {
-      event.preventDefault();
-      const form = event.currentTarget;
-      const name = form.name.value;
-      const email = form.email.value;
-      const message = form.message.value;
-      const subject = encodeURIComponent(`Message portfolio - ${name}`);
-      const body = encodeURIComponent(`Nom: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
-      window.location.href = `mailto:Abdel.Bouzourine.ti@gmail.com?subject=${subject}&body=${body}`;
-    }
-
-    // ─────────────────────────────────────────────
-    // ✅ FIX: Calendrier — weekends non-disponibles
-    // ─────────────────────────────────────────────
     const monthNames = [
-      "Janvier","Fevrier","Mars","Avril","Mai","Juin",
-      "Juillet","Aout","Septembre","Octobre","Novembre","Decembre"
+      "Janvier", "Fevrier", "Mars", "Avril", "Mai", "Juin",
+      "Juillet", "Aout", "Septembre", "Octobre", "Novembre", "Decembre"
     ];
 
     let calendarDate = new Date();
     calendarDate.setDate(1);
 
-    function pad(value) { return String(value).padStart(2, "0"); }
-    function dateKey(year, month, day) { return `${year}-${pad(month + 1)}-${pad(day)}`; }
+    function pad(value) {
+      return String(value).padStart(2, "0");
+    }
+
+    function dateKey(year, month, day) {
+      return `${year}-${pad(month + 1)}-${pad(day)}`;
+    }
 
     function renderCalendar() {
       const grid = document.getElementById("availability-calendar");
@@ -1152,7 +1085,7 @@
       title.textContent = `${monthNames[month]} ${year}`;
       grid.innerHTML = "";
 
-      for (let i = 0; i < mondayBasedStart; i++) {
+      for (let i = 0; i < mondayBasedStart; i += 1) {
         const blank = document.createElement("button");
         blank.type = "button";
         blank.className = "day blank";
@@ -1160,37 +1093,31 @@
         grid.appendChild(blank);
       }
 
-      for (let day = 1; day <= daysInMonth; day++) {
+      for (let day = 1; day <= daysInMonth; day += 1) {
         const key = dateKey(year, month, day);
-        const dayOfWeek = new Date(year, month, day).getDay(); // 0=dim, 6=sam
-
-        // ✅ FIX: weekends = classe "weekend", pas "available"
-        const isWeekend = (dayOfWeek === 0 || dayOfWeek === 6);
-        const state = isWeekend ? "weekend" : "available";
-
+        const state = "available";
         const button = document.createElement("button");
         button.type = "button";
         button.className = `day ${state}`;
         button.textContent = day;
-        button.setAttribute("aria-label", `${day} ${monthNames[month]} ${year}${isWeekend ? " - indisponible" : ""}`);
-        button.disabled = isWeekend;
+        button.setAttribute("aria-label", `${day} ${monthNames[month]} ${year}`);
 
-        if (!isWeekend) {
-          button.addEventListener("click", () => selectSlot(key));
-        }
+        button.addEventListener("click", () => selectSlot(key, state));
+
         grid.appendChild(button);
       }
     }
 
-    function selectSlot(key) {
+    function selectSlot(key, state) {
       const output = document.getElementById("selected-slot");
+      const label = state === "available" ? "libre" : "a confirmer";
       const slots = ["09:00", "10:30", "12:00", "14:00", "15:30", "17:00"];
       const links = slots.map((slot) => {
         const mailSubject = encodeURIComponent("Demande de rendez-vous");
         const mailBody = encodeURIComponent(`Bonjour Abdelkader,\n\nJe souhaite planifier un rendez-vous avec vous le ${key} a ${slot}.\n\nMerci.`);
         return `<a href="mailto:Abdel.Bouzourine.ti@gmail.com?subject=${mailSubject}&body=${mailBody}">${slot}</a>`;
       }).join("");
-      output.innerHTML = `Date selectionnee : <strong>${key}</strong> (libre). Choisissez une plage horaire : <div class="time-slots">${links}</div>`;
+      output.innerHTML = `Date selectionnee : <strong>${key}</strong> (${label}). Choisissez une plage horaire libre : <div class="time-slots">${links}</div>`;
     }
 
     document.getElementById("prev-month")?.addEventListener("click", () => {
@@ -1203,32 +1130,95 @@
       renderCalendar();
     });
 
+    if (!window.sendMessage) {
+      window.sendMessage = function sendMessage(event) {
+        event.preventDefault();
+        const form = event.currentTarget;
+        const name = form.name.value;
+        const email = form.email.value;
+        const message = form.message.value;
+        const subject = encodeURIComponent(`Message portfolio - ${name}`);
+        const body = encodeURIComponent(`Nom: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
+        window.location.href = `mailto:Abdel.Bouzourine.ti@gmail.com?subject=${subject}&body=${body}`;
+      };
+    }
+
+    const landingTranslations = {
+      fr: {
+        hero_eyebrow: "Data Analyst & BI Consultant",
+        hero_title: "Transformer les donnees en decisions claires.",
+        hero_desc: "Je cree des tableaux de bord Power BI, automatise les pipelines de donnees et aide les equipes a piloter leurs indicateurs avec confiance.",
+        hero_projects: "Voir mes projets",
+        hero_meeting: "Planifier un rendez-vous",
+        story_eyebrow: "Data storytelling",
+        story_title: "Des signaux bruts aux insights actionnables.",
+        story_desc: "Une experience visuelle inspiree des landing pages Apple : donnees, mouvements, KPI et narration fluide au scroll.",
+        story_scroll: "Scroll pour explorer"
+      },
+      en: {
+        hero_eyebrow: "Data Analyst & BI Consultant",
+        hero_title: "Turning data into clear decisions.",
+        hero_desc: "I build Power BI dashboards, automate data pipelines, and help teams monitor their KPIs with confidence.",
+        hero_projects: "View my projects",
+        hero_meeting: "Schedule a meeting",
+        story_eyebrow: "Data storytelling",
+        story_title: "From raw signals to actionable insights.",
+        story_desc: "A visual experience inspired by Apple landing pages: data, motion, KPIs, and smooth scroll-based storytelling.",
+        story_scroll: "Scroll to explore"
+      },
+      ar: {
+        hero_eyebrow: "محلل بيانات ومستشار ذكاء الأعمال",
+        hero_title: "تحويل البيانات إلى قرارات واضحة.",
+        hero_desc: "أقوم بإنشاء لوحات Power BI، وأتمتة مسارات البيانات، ومساعدة الفرق على متابعة مؤشرات الأداء بثقة.",
+        hero_projects: "عرض مشاريعي",
+        hero_meeting: "حجز موعد",
+        story_eyebrow: "سرد البيانات",
+        story_title: "من إشارات خام إلى رؤى قابلة للتنفيذ.",
+        story_desc: "تجربة بصرية مستوحاة من صفحات Apple: بيانات، حركة، مؤشرات أداء، وسرد سلس أثناء التمرير.",
+        story_scroll: "مرر للاستكشاف"
+      }
+    };
+
+    function applyLandingTranslations(lang) {
+      const dictionary = landingTranslations[lang] || landingTranslations.fr;
+      document.querySelectorAll("[data-landing-i18n]").forEach((element) => {
+        const key = element.getAttribute("data-landing-i18n");
+        if (dictionary[key]) element.textContent = dictionary[key];
+      });
+      document.documentElement.lang = lang;
+      document.querySelector(".hero")?.setAttribute("dir", lang === "ar" ? "rtl" : "ltr");
+      document.querySelector(".scroll-stage")?.setAttribute("dir", lang === "ar" ? "rtl" : "ltr");
+    }
+
+    document.querySelectorAll(".lang-switch button[data-lang]").forEach((button) => {
+      button.addEventListener("click", () => {
+        applyLandingTranslations(button.dataset.lang);
+      });
+    });
+
+    applyLandingTranslations(document.querySelector(".lang-switch button.active")?.dataset.lang || "fr");
+
     renderCalendar();
 
-    // ─────────────────────────────────────────────
-    // ✅ FIX: Canvas — dimensions en cache, pas de getBoundingClientRect à chaque frame
-    // ─────────────────────────────────────────────
     const canvas = document.getElementById("data-canvas");
     const ctx = canvas?.getContext("2d");
     const frame = { value: 0 };
-    let cachedW = 0, cachedH = 0;
 
     function resizeCanvas() {
       if (!canvas || !ctx) return;
       const ratio = Math.min(window.devicePixelRatio || 1, 2);
       const rect = canvas.getBoundingClientRect();
-      cachedW = rect.width;
-      cachedH = rect.height;
-      canvas.width = Math.floor(cachedW * ratio);
-      canvas.height = Math.floor(cachedH * ratio);
+      canvas.width = Math.floor(rect.width * ratio);
+      canvas.height = Math.floor(rect.height * ratio);
       ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
       drawDataFrame(frame.value);
     }
 
     function drawDataFrame(progress) {
-      if (!canvas || !ctx || cachedW === 0) return;
-      const w = cachedW;
-      const h = cachedH;
+      if (!canvas || !ctx) return;
+      const rect = canvas.getBoundingClientRect();
+      const w = rect.width;
+      const h = rect.height;
       const p = Math.max(0, Math.min(1, progress));
 
       ctx.clearRect(0, 0, w, h);
@@ -1279,12 +1269,10 @@
       ctx.lineJoin = "round";
       ctx.beginPath();
       const points = [];
-      for (let i = 0; i < 9; i++) {
+      for (let i = 0; i < 9; i += 1) {
         const x = w * 0.12 + i * (w * 0.76 / 8);
         const wave = Math.sin(i * 0.92 + p * 4.2) * h * 0.055;
-        // ✅ FIX: clamp Y pour que la courbe ne sorte pas du canvas
-        const rawY = h * (0.48 - i * 0.018) + wave - p * h * 0.12;
-        const y = Math.max(12, Math.min(h - 12, rawY));
+        const y = h * (0.48 - i * 0.018) + wave - p * h * 0.12;
         points.push([x, y]);
         if (i === 0) ctx.moveTo(x, y);
         else ctx.lineTo(x, y);
@@ -1309,24 +1297,12 @@
       ctx.fillStyle = "rgba(255,255,255,0.62)";
       ctx.font = "700 13px Inter, Arial";
       ctx.fillText("INSIGHT READINESS", w * 0.70, h * 0.245);
-
-      // ✅ FIX: fade-out du canvas-copy après 20% de progression
-      const canvasCopy = document.getElementById("canvas-copy");
-      if (canvasCopy) {
-        canvasCopy.style.opacity = p < 0.2 ? "1" : Math.max(0, 1 - (p - 0.2) / 0.2).toFixed(2);
-      }
     }
 
-    // ─────────────────────────────────────────────
-    // ✅ FIX: Fallback scroll natif avec throttle RAF
-    // ─────────────────────────────────────────────
     function nativeScrollFallback() {
       const stage = document.querySelector(".scroll-stage");
       const reveals = document.querySelectorAll(".scroll-reveal");
-      let rafPending = false;
-
       function update() {
-        rafPending = false;
         if (stage) {
           const rect = stage.getBoundingClientRect();
           const total = Math.max(1, rect.height - window.innerHeight);
@@ -1343,49 +1319,16 @@
           }
         });
       }
-
-      window.addEventListener("scroll", () => {
-        if (!rafPending) {
-          rafPending = true;
-          requestAnimationFrame(update);
-        }
-      }, { passive: true });
+      window.addEventListener("scroll", update, { passive: true });
       update();
     }
 
     window.addEventListener("resize", resizeCanvas);
     resizeCanvas();
 
-    // ─────────────────────────────────────────────
-    // ✅ FIX: prefers-reduced-motion — skip animations
-    // ─────────────────────────────────────────────
-    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-    if (prefersReducedMotion) {
-      // Afficher toutes les sections directement sans animation
-      document.querySelectorAll(".scroll-reveal").forEach(el => {
-        el.style.opacity = "1";
-        el.style.transform = "none";
-      });
-      drawDataFrame(0.5); // frame statique
-    } else if (window.gsap && window.ScrollTrigger) {
-      // ─────────────────────────────────────────────
-      // ✅ FIX: GSAP chargé avant — ce bloc s'exécute maintenant correctement
-      // ─────────────────────────────────────────────
+    if (window.gsap && window.ScrollTrigger) {
       document.documentElement.classList.add("gsap-ready");
       gsap.registerPlugin(ScrollTrigger);
-
-      // ✅ NOUVEAU: Barre de progression scroll
-      gsap.to("#scroll-progress", {
-        width: "100%",
-        ease: "none",
-        scrollTrigger: {
-          trigger: "body",
-          start: "top top",
-          end: "bottom bottom",
-          scrub: true
-        }
-      });
 
       gsap.set(".hero-copy", { opacity: 0, y: 50, scale: 0.98 });
       gsap.set(".hero-visual", { opacity: 0, y: 70, rotateX: 8, transformPerspective: 900 });
@@ -1411,25 +1354,26 @@
         .to(".chart-card", { opacity: 1, scale: 1, duration: 0.7, ease: "back.out(1.6)" }, "-=0.2");
 
       gsap.to(".hero-copy", {
-        y: -18,
+        y: -8,
+        opacity: 1,
         ease: "none",
         scrollTrigger: {
           trigger: ".hero",
           start: "top top",
-          end: "bottom 28%",
-          scrub: true
+          end: "bottom 10%",
+          scrub: 0.8
         }
       });
 
       gsap.to(".hero-visual", {
-        y: -12,
-        rotate: 0.4,
+        y: -6,
+        rotate: 0.2,
         ease: "none",
         scrollTrigger: {
           trigger: ".hero",
           start: "top top",
-          end: "bottom 28%",
-          scrub: true
+          end: "bottom 10%",
+          scrub: 0.8
         }
       });
 
@@ -1440,9 +1384,7 @@
           trigger: ".scroll-stage",
           start: "top top",
           end: "bottom bottom",
-          scrub: true,
-          pin: ".canvas-sticky",
-          anticipatePin: 1
+          scrub: 0.6
         },
         onUpdate: () => drawDataFrame(frame.value)
       });
@@ -1456,9 +1398,18 @@
             toggleActions: "play none none reverse"
           }
         })
-        .to(section, { opacity: 1, y: 0, duration: 0.9, ease: "power2.out" })
+        .to(section, {
+          opacity: 1,
+          y: 0,
+          duration: 0.9,
+          ease: "power2.out"
+        })
         .to(section.querySelectorAll(".impact-card, .proj, .skills > div, .calendar-card, .contact-form"), {
-          opacity: 1, y: 0, duration: 0.7, stagger: 0.12, ease: "power2.out"
+          opacity: 1,
+          y: 0,
+          duration: 0.7,
+          stagger: 0.12,
+          ease: "power2.out"
         }, "-=0.45");
       });
 
@@ -1480,8 +1431,15 @@
         gsap.fromTo(value,
           { scale: 0.86, opacity: 0 },
           {
-            scale: 1, opacity: 1, duration: 0.7, ease: "back.out(1.8)",
-            scrollTrigger: { trigger: value, start: "top 86%", toggleActions: "play none none reverse" }
+            scale: 1,
+            opacity: 1,
+            duration: 0.7,
+            ease: "back.out(1.8)",
+            scrollTrigger: {
+              trigger: value,
+              start: "top 86%",
+              toggleActions: "play none none reverse"
+            }
           }
         );
       });
@@ -1496,10 +1454,6 @@
           scrub: true
         }
       });
-
-      // ✅ FIX: Snap supprimé (était global et causait des saccades)
-      // Si tu veux un snap, applique-le uniquement sur .scroll-stage :
-      // ScrollTrigger.create({ trigger: ".scroll-stage", snap: { ... } });
 
     } else {
       nativeScrollFallback();
